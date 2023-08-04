@@ -40,7 +40,7 @@ if(!empty($_SESSION["user_id"])){
             <nav class="sidebar">
             <ul class="ul-vertical">
                 <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="#">Requisition</a></li>
+                <li><a href="adminRequisition.php">Requisition</a></li>
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
                 <li><a href="adminCostings.php">Costing</a></li>
@@ -53,19 +53,52 @@ if(!empty($_SESSION["user_id"])){
             </nav>
             </div>
             <div class="card">
-                <div class="cardHeader mb-3">
-                <span class="float-left"><h1>Requisition</h1></span>
-                </div>
-                <div class = "cardBody form-row mb-3 center-items p-top-0 p-bot-0">
-                    <a href = "adminRequisition_spec.php" type = "button" class = "btn btn-success">Specific Time</a>
-                    <a href = "adminRequisition_whole.php"type = "button" class = "btn btn-success">Whole Day</a>
-                    <a href = "adminRequisition_whole2.php" type = "button" class = "btn btn-success">Whole Day Specific Dates</a>
-                </div>
                 <div class="cardHeader">
-                        <span class="float-left"><h3>Online Requests</h3></span>
+                <span class="float-left"><h1>Requisition (Bed Rooms)</h1></span>
                 </div>
-                <div class="cardBody">
-                    
+                <div class = "cardBody form-row">
+                    <a href="adminRequisition.php" type = "button" class = "btn btn-success">Back</a>
+                </div>
+                <div class="cardBody p-top-0">
+                    <form name = "req_form" id = "req_form" action="" method="post">
+                        <div class = "card">
+                            <table>
+                                <tr>
+                                    <td class="col-md-2">Requisition Type: <select name = "req_type" >
+                                            <option value = "1" selected>Regular</option>
+                                            <option value = "2" >Special</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class = "col-md-3">Date of Trip: <input name="req_date" type = "date" onchange="this.form.submit()">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Departure Time:
+                                    <select name="time_start" onchange="this.form.submit()">
+                                        <option value="1" selected="">12:00 AM</option>
+                                        <option value="3">1:00 AM</option>
+                                        <option value="5">2:00 AM</option>
+                                        <option value="7">3:00 AM</option>
+                                        <option value="9">4:00 AM</option>
+                                        <option value="11">5:00 AM</option>
+                                        <option value="13">6:00 AM</option>
+                                    </select>
+		                                
+                                     </td>
+                                     <td>Arrival Time: <select name="time_end" onchange="this.form.submit()">
+                                        <option value="43" selected="">12:00 AM</option>
+                                        <option value="45">1:00 AM</option>
+                                        <option value="47">2:00 AM</option>
+                                     </td>
+                                    <td align="right">
+                                        <input type="submit" name="r_sked" class="btn btn-success" value = "Reserve Selected Dates">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
                 </div>
                     
             </div>

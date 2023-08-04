@@ -66,20 +66,44 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <span class="float-left"><h3>Generate Report (Overall)</h3></span>
+                    <span class="float-left"><h3>Generate Report (Summary - Vehicles)</h3></span>
                 </div>
                 <div class="cardBody">
                     <form name = "reportForm" id="reportform" method="post">
                     <table>
                         <tr>
-                            <td>From: <input type = "date" name="datefrom" value readonly="" onclick="GetDate(this);"></td>
-                            <td>To: <input type = "date" name="dateto" value readonly="" onclick="GetDate(this);"> </td>
-                            <td>Sort by:
-                                 <select>
-                                    <option value="req_no">Req No.</option>
-                                    <option value="vehicle">Vehicle</option>
-                                    <option value="driver">Driver</option>
-                                    <option value="date_of_trip">Date of Trip</option>
+                            <td>Month: <select>
+                                    <option value="%%">ALL</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </td>
+                            <td>Year: <select>
+                                    <option value="%%">ALL</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </td>
+                            <td>Vehicle: <select>
+                                    <option value="%%">ALL</option>
                                 </select>
                             </td>
                             <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>

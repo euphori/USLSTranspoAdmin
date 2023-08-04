@@ -9,6 +9,7 @@ if(!empty($_SESSION["user_id"])){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +41,7 @@ if(!empty($_SESSION["user_id"])){
             <nav class="sidebar">
             <ul class="ul-vertical">
                 <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="#">Requisition</a></li>
+                <li><a href="adminRequisition.php">Requisition</a></li>
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
                 <li><a href="adminCostings.php">Costing</a></li>
@@ -48,26 +49,35 @@ if(!empty($_SESSION["user_id"])){
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
                 <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
+                <li><a href="#">Reports</a></li>
             </ul>
             </nav>
             </div>
             <div class="card">
-                <div class="cardHeader mb-3">
-                <span class="float-left"><h1>Requisition</h1></span>
-                </div>
-                <div class = "cardBody form-row mb-3 center-items p-top-0 p-bot-0">
-                    <a href = "adminRequisition_spec.php" type = "button" class = "btn btn-success">Specific Time</a>
-                    <a href = "adminRequisition_whole.php"type = "button" class = "btn btn-success">Whole Day</a>
-                    <a href = "adminRequisition_whole2.php" type = "button" class = "btn btn-success">Whole Day Specific Dates</a>
-                </div>
                 <div class="cardHeader">
-                        <span class="float-left"><h3>Online Requests</h3></span>
+                <span class="float-left"><h1>Reports</h1></span>
                 </div>
                 <div class="cardBody">
-                    
+                    <div class = "cardBody form-row center-items p-top-0 p-bot-0">
+                        <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
+                        <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
+                        <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
+                        <a href = "adminReports_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
+                    </div>
                 </div>
-                    
+                <div class="cardHeader">
+                    <span class="float-left"><h3>Generate Report (Summary - Depository)</h3></span>
+                </div>
+                <div class="cardBody">
+                    <form name = "reportForm" id="reportform" method="post">
+                    <table>
+                        <tr>
+                            <td>From: <input type = "date" name="datefrom" value readonly="" onclick="GetDate(this);"></td>
+                            <td>To: <input type = "date" name="dateto" value readonly="" onclick="GetDate(this);"> </td>
+                            <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>
+                        </tr>
+                    </table>
+                    </form>
             </div>
         </main>
         <footer>       

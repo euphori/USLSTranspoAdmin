@@ -60,24 +60,17 @@ if(!empty($_SESSION["user_id"])){
                 <div class="cardBody">
                     <div class="form-row center-items mb-3">
                             <div class="card col-md-4 h100">
-                                <div class="cardHeader text-white bg-lasalle-grn">My Profile</div>
-                                <a class="cardFooter bg-lasalle-grnAlt" href="userProfile.php">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">➤</span>
-                                </a>
-                            </div>
-                            <div class="card col-md-4 h100">
                                 <div class="cardHeader text-white bg-lasalle-grn">Canceled Bookings</div>
                                 <a class="cardFooter bg-lasalle-grnAlt" href="userBookings.php">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">➤</span>
+                                    <span class="float-left text-white">View Details</span>
+                                    <span class="float-right text-white">➤</span>
                                 </a>
                             </div>
                             <div class="card col-md-4 h100">
                                 <div class="cardHeader text-white bg-lasalle-grn">Trip Schedule</div>
                                 <a class="cardFooter bg-lasalle-grnAlt" href="userReservations.php">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">➤</span>
+                                    <span class="float-left text-white">View Details</span>
+                                    <span class="float-right text-white">➤</span>
                                 </a>
                             </div>
                     </div>
