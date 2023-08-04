@@ -58,7 +58,9 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Reservations</h1></span>
                 </div>
                 <div class="cardBody">
-                    
+                <div class="cardBody">
+                    <a href = "adminReservations_review.php">View Reservation</a>
+                </div>
                 </div>
             </div>
         </main>
