@@ -59,10 +59,10 @@ if(!empty($_SESSION["user_id"])){
                 </div>
                 <div class="cardBody">
                 <div class = "cardBody form-row center-items">
-                    <a href = "adminReport.php" type = "button" class = "btn btn-success">Overall</a>
-                    <a href = "adminReport_category.php"type = "button" class = "btn btn-success">By Category</a>
-                    <a href = "adminReport_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
-                    <a href = "adminReport_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
+                    <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
+                    <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
+                    <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
+                    <a href = "adminReports_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
                 </div>
                 </div>
             </div>
