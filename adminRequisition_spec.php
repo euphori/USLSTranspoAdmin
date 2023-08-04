@@ -54,18 +54,31 @@ if(!empty($_SESSION["user_id"])){
             </div>
             <div class="card">
                 <div class="cardHeader mb-3">
-                <span class="float-left"><h1>Requisition</h1></span>
+                <span class="float-left"><h1>Requisition (Specific)</h1></span>
                 </div>
                 <div class = "cardBody form-row mb-3 center-items">
-                    <a href = "adminRequisition_spec.php" type = "button" class = "btn btn-success">Specific Time</a>
-                    <a href = "adminRequisition_whole.php"type = "button" class = "btn btn-success">Whole Day</a>
-                    <a href = "adminRequisition_whole2.php" type = "button" class = "btn btn-success">Whole Day Specific Dates</a>
-                </div>
-                <div class="cardHeader">
-                        <span class="float-left"><h3>Online Requests</h3></span>
+                    <a type = "button" class = "btn btn-success">Back</a>
                 </div>
                 <div class="cardBody">
-                    
+                    <form name = "req_form" id = "req_form" action="" method="post">
+                        <div class = "card">
+                            <table>
+                                <tr>
+                                    <td>Requisition Type:</td>
+                                    <td>
+                                        <select name = "req_type">
+                                            <option value = "1" selected>Regular</option>
+                                            <option value = "2" >Special</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Trip:</td>
+                                    <td><input name = "req_date" type = "datetime"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
                 </div>
                     
             </div>
