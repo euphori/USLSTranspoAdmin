@@ -59,7 +59,7 @@ if(!empty($_SESSION["user_id"])){
                 <div class = "cardBody form-row">
                     <a href="adminRequisition.php" type = "button" class = "btn btn-success">Back</a>
                 </div>
-                <div class="cardBody">
+                <div class="cardBody p-top-0">
                     <form name = "req_form" id = "req_form" action="" method="post">
                         <div class = "card">
                             <table>
