@@ -64,17 +64,14 @@ if(!empty($_SESSION["user_id"])){
                         <div class = "card">
                             <table>
                                 <tr>
-                                    <td class="col-md-2">Requisition Type:</td>
-                                    <td class="col-md-2">
-                                        <select name = "req_type">
+                                    <td class="col-md-2">Requisition Type: <select name = "req_type">
                                             <option value = "1" selected>Regular</option>
                                             <option value = "2" >Special</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Date of Trip:</td>
-                                    <td class="col-md-2"><input name = "req_date" type = "date" onchange="this.form.submit()"></td>
+                                    <td class="col-md-2">Date of Trip:<input name = "req_date" type = "date" onchange="this.form.submit()"></td>
                                 </tr>
                                 <tr>
                                     <td>
