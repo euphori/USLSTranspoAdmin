@@ -66,7 +66,7 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <span class="float-left"><h1>Generate Report</h1></span>
+                    <span class="float-left"><h3>Generate Report</h3></span>
                 </div>
             </div>
         </main>
