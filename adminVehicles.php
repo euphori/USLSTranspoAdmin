@@ -10,6 +10,23 @@ if(!empty($_SESSION["user_id"])){
 ?>
 
 
+<?php
+if(isset($_POST["submit"])){
+    $v_code = $_POST["v_code"];
+    $v_name = $_POST["v_name"];
+    $v_model = $_POST["v_model"];
+    $v_platenum = $_POST["v_platenum"];
+    $v_type = $_POST["v_type"];
+    $usage_rights = $_POST["usage_rights"];
+    $v_seat_cap = $_POST["v_seat_cap"];
+    $query = "INSERT INTO vehicles VALUES('', '$v_code','$v_name','$v_model','$v_platenum','$v_seat_cap','$v_type','','','','','$usage_rights','','','','')";
+    mysqli_query($conn,$query);
+    echo
+    "<script> alert('Added'); </script>";
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,7 +75,288 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Vehicles</h1></span>
                 </div>
                 <div class="cardBody">
-                    <button openForm class = "btn btn-success">Create a New Record</button>
+                <button openForm class = "mb-3 btn btn-success">Create New Rates</button>
+                <div class="table" >
+                    <div class="column">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">ID</div>
+                        </div>
+                        <?php
+                            $sql = "SELECT * FROM vehicles";
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["v_id"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' .$data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">No data found in the database.</div>';
+                                echo '</div>';
+                            }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Vehicle Code</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_code"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Name / Brand</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_name"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Model/Series</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_model"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Plate Number</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_platenum"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Seating Capacity</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_seat_cap"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Type</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_type"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Status</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_status"];
+                                if($data == 1){
+                                    $data = 'Available';
+                                }else{
+                                    $data = 'Unvailable';
+                                }
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>       
+                    
+                    
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Action</div>
+                           
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM vehicles";
+                        
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+        
+                                $data = $row["v_id"];
+                                echo '<div class="item-cell">     
+                                    <button openForm class="btn btn-success">
+                                    Change
+                                    </button>
+                                    <a class="btn btn-danger" href = "delete.php?v_delete_id='.$data.'">
+                                    Remove
+                                    </a>
+                                   
+                                    
+                                    </div>
+                                    ';
+                              
+                                $counter++;
+                            }
+                            } else {
+                            echo "No data found in the database.";
+                            }
+                            
+
+                        ?>
+                        
+        
+               
+                        
+                    </div>
+                
+                </div>
                 </div>
             </div>
         </main>
@@ -127,9 +425,9 @@ if(!empty($_SESSION["user_id"])){
                             <div class = "col-md-2">
                             <label class="alt">Usage Rights</label> 
                             <select class="form-control" name="usage_rights">
-                                <option value="aircon_bus">ALL</option>
-                                <option value="nonair_bus">VC's & ADMIN</option>
-                                <option value="nonair_van">ADMIN ONLY</option>
+                                <option value=1>ALL</option>
+                                <option value=2>VC's & ADMIN</option>
+                                <option value=3>ADMIN ONLY</option>
                             </select>
                             </div>
                         </div>

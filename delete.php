@@ -42,3 +42,18 @@ if(isset($_GET['r_delete_id'])){
     }
 }
 ?>
+
+<?php
+include 'config.php';
+if(isset($_GET['v_delete_id'])){
+    $id = $_GET['v_delete_id'];
+    $sql = "DELETE FROM vehicles WHERE v_id = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){
+        header('location:adminVehicles.php');
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>

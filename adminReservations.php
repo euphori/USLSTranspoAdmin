@@ -58,7 +58,198 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Reservations</h1></span>
                 </div>
                 <div class="cardBody">
+                <div class="table" >
+
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Requisition Number</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["req_no"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' .$data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Date of Trip</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["date_of_trip"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Flag-Down Rate</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["flag_rate"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Date Reserved</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["date_reserve"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Reservation(s) of</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["requestor"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+
                     
+                    
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Action</div>
+                           
+                        </div>
+                        <?php
+                        $sql = "SELECT * FROM reservation";
+                        
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+        
+                                $data = $row["res_id"];
+                                echo '<div class="item-cell">     
+                                    <button openForm class="btn btn-success">
+                                    Change
+                                    </button>
+                                    <a class="btn btn-danger" href = "delete.php?r_delete_id='.$data.'">
+                                    Remove
+                                    </a>
+                                   
+                                    
+                                    </div>
+                                    ';
+                              
+                                $counter++;
+                            }
+                            } else {
+                            echo "No data found in the database.";
+                            }
+                            
+
+                        ?>
+                        
+        
+               
+                        
+                    </div>
+                
+                </div>    
                 </div>
             </div>
         </main>
