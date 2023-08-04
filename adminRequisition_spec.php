@@ -40,7 +40,7 @@ if(!empty($_SESSION["user_id"])){
             <nav class="sidebar">
             <ul class="ul-vertical">
                 <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="#">Requisition</a></li>
+                <li><a href="adminRequisition.php">Requisition</a></li>
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
                 <li><a href="adminCostings.php">Costing</a></li>

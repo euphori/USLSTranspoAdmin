@@ -40,7 +40,7 @@ if(!empty($_SESSION["user_id"])){
             <nav class="sidebar">
             <ul class="ul-vertical">
                 <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="#">Requisition</a></li>
+                <li><a href="adminRequisition.php">Requisition</a></li>
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
                 <li><a href="adminCostings.php">Costing</a></li>
@@ -54,15 +54,31 @@ if(!empty($_SESSION["user_id"])){
             </div>
             <div class="card">
                 <div class="cardHeader mb-3">
-                <span class="float-left"><h1>Requisition</h1></span>
+                <span class="float-left"><h1>Requisition (Bed Rooms)</h1></span>
                 </div>
                 <div class = "cardBody form-row mb-3 center-items">
-                    <a type = "button" class = "btn btn-success">Specific Time</a>
-                    <a type = "button" class = "btn btn-success">Whole Day</a>
-                    <a type = "button" class = "btn btn-success">Whole Day Specific Dates</a>
+                    <a type = "button" class = "btn btn-success">Back</a>
                 </div>
                 <div class="cardBody">
-                    
+                    <form name = "req_form" id = "req_form" action="" method="post">
+                        <div class = "card">
+                            <table>
+                                <tr>
+                                    <td>Requisition Type:</td>
+                                    <td>
+                                        <select name = "req_type">
+                                            <option value = "1" selected>Regular</option>
+                                            <option value = "2" >Special</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Trip:</td>
+                                    <td><input name = "req_date" type = "datetime"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
                 </div>
                     
             </div>
