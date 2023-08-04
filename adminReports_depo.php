@@ -58,12 +58,15 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Reports</h1></span>
                 </div>
                 <div class="cardBody">
-                <div class = "cardBody form-row center-items">
-                    <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
-                    <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
-                    <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
-                    <a href = "adminReports_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
+                    <div class = "cardBody form-row center-items">
+                        <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
+                        <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
+                        <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
+                        <a href = "adminReports_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
+                    </div>
                 </div>
+                <div class="cardHeader">
+                    <span class="float-left"><h1>Generate Report</h1></span>
                 </div>
             </div>
         </main>
