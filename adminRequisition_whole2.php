@@ -77,7 +77,8 @@ if(!empty($_SESSION["user_id"])){
                                     <td><input name = "req_date" type = "date" onchange="this.form.submit()></td>
                                 </tr>
                                 <tr>
-                                    <td>Departure Time: <select name="time_start" onchange="this.form.submit()">
+                                    <td>Departure Time:
+                                    <select name="time_start" onchange="this.form.submit()">
                                         <option value="1" selected="">12:00 AM</option>
                                         <option value="3">1:00 AM</option>
                                         <option value="5">2:00 AM</option>
@@ -88,11 +89,10 @@ if(!empty($_SESSION["user_id"])){
                                     </select>
 		                                
                                      </td>
-                                     <td>Arrival Time: <select name="time_start" onchange="this.form.submit()">
+                                     <td>Arrival Time: <select name="time_end" onchange="this.form.submit()">
                                         <option value="43" selected="">12:00 AM</option>
                                         <option value="45">1:00 AM</option>
                                         <option value="47">2:00 AM</option>
-                                        </select>
                                      </td>
                                     <td align="right">
                                         <input type="submit" name="r_sked" class="btn btn-success" value = "Reserve Selected Dates">
