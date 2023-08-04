@@ -71,7 +71,7 @@ if(!empty($_SESSION["user_id"])){
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-md-2">Date of Trip:<input name = "req_date" type = "date" onchange="this.form.submit()"></td>
+                                    <td class="col-md-2">Date of Trip: <input name = "req_date" type = "date" onchange="this.form.submit()"></td>
                                 </tr>
                                 <tr>
                                     <td>
