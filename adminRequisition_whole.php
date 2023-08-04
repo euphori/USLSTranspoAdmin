@@ -56,8 +56,8 @@ if(!empty($_SESSION["user_id"])){
                 <div class="cardHeader mb-3">
                 <span class="float-left"><h1>Requisition (Whole Day)</h1></span>
                 </div>
-                <div class = "cardBody form-row mb-3 center-items">
-                    <a type = "button" class = "btn btn-success">Back</a>
+                <div class = "cardBody form-row mb-3">
+                    <a href="adminRequisition.php" type = "button" class = "btn btn-success">Back</a>
                 </div>
                 <div class="cardBody">
                     <form name = "req_form" id = "req_form" action="" method="post">
