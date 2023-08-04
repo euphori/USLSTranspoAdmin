@@ -74,7 +74,7 @@ if(!empty($_SESSION["user_id"])){
                                 </tr>
                                 <tr>
                                     <td class="col-md-2">Date of Trip:</td>
-                                    <td class="col-md-2"><input name = "req_date" type = "datetime"></td>
+                                    <td class="col-md-2"><input name = "req_date" type = "date"></td>
                                 </tr>
                             </table>
                         </div>
