@@ -53,7 +53,7 @@ if(!empty($_SESSION["user_id"])){
             </nav>
             </div>
             <div class="card">
-                <div class="cardHeader mb-3">
+                <div class="cardHeader">
                 <span class="float-left"><h1>Requisition (Specific)</h1></span>
                 </div>
                 <div class = "cardBody form-row">
