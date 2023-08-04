@@ -59,14 +59,14 @@ if(!empty($_SESSION["user_id"])){
                 <div class = "cardBody form-row">
                     <a href="adminRequisition.php" type = "button" class = "btn btn-success">Back</a>
                 </div>
-                <div class="cardBody col-md-2">
+                <div class="cardBody">
                     <form name = "req_form" id = "req_form" action="" method="post">
                         <div class = "card">
                             <table>
                                 <tr>
                                     <td>Requisition Type:</td>
                                     <td>
-                                        <select name = "req_type">
+                                        <select name = "req_type" >
                                             <option value = "1" selected>Regular</option>
                                             <option value = "2" >Special</option>
                                         </select>
@@ -74,24 +74,29 @@ if(!empty($_SESSION["user_id"])){
                                 </tr>
                                 <tr>
                                     <td>Date of Trip:</td>
-                                    <td><input name = "req_date" type = "date"></td>
+                                    <td><input name = "req_date" type = "date" onchange="this.form.submit()></td>
                                 </tr>
                                 <tr>
                                     <td>Departure Time: <select name="time_start" onchange="this.form.submit()">
-		                                <option value="1" selected="">12:00 AM  </option>
+                                        <option value="1" selected="">12:00 AM</option>
                                         <option value="3">1:00 AM</option>
                                         <option value="5">2:00 AM</option>
                                         <option value="7">3:00 AM</option>
                                         <option value="9">4:00 AM</option>
                                         <option value="11">5:00 AM</option>
                                         <option value="13">6:00 AM</option>
+                                    </select>
+		                                
                                      </td>
                                      <td>Arrival Time: <select name="time_start" onchange="this.form.submit()">
                                         <option value="43" selected="">12:00 AM</option>
                                         <option value="45">1:00 AM</option>
                                         <option value="47">2:00 AM</option>
+                                        </select>
                                      </td>
-                                    <td align="right"></td>
+                                    <td align="right">
+                                        <input type="submit" name="r_sked" class="btn btn-success" value = "Reserve Selected Dates">
+                                    </td>
                                 </tr>
                             </table>
                         </div>
