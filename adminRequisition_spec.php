@@ -76,6 +76,11 @@ if(!empty($_SESSION["user_id"])){
                                     <td>Date of Trip:</td>
                                     <td><input name = "req_date" type = "date" onchange="this.form.submit()"></td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" name="r_sked" class="btn btn-success" value = "Reserve Selected Dates">
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </form>
