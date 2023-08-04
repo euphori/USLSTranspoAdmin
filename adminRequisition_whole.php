@@ -53,13 +53,13 @@ if(!empty($_SESSION["user_id"])){
             </nav>
             </div>
             <div class="card">
-                <div class="cardHeader mb-3">
+                <div class="cardHeader">
                 <span class="float-left"><h1>Requisition (Whole Day)</h1></span>
                 </div>
                 <div class = "cardBody form-row">
                     <a href="adminRequisition.php" type = "button" class = "btn btn-success">Back</a>
                 </div>
-                <div class="cardBody p-top-0">
+                <div class="cardBody col-md-2">
                     <form name = "req_form" id = "req_form" action="" method="post">
                         <div class = "card">
                             <table>
