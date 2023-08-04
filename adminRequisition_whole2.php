@@ -64,8 +64,8 @@ if(!empty($_SESSION["user_id"])){
                         <div class = "card">
                             <table>
                                 <tr>
-                                    <td class = "col-md-3">Requisition Type:</td>
-                                    <td>
+                                    <td class="col-md-2">Requisition Type:</td>
+                                    <td class="col-md-2">
                                         <select name = "req_type" >
                                             <option value = "1" selected>Regular</option>
                                             <option value = "2" >Special</option>
@@ -74,7 +74,7 @@ if(!empty($_SESSION["user_id"])){
                                 </tr>
                                 <tr>
                                     <td class = "col-md-3">Date of Trip:</td>
-                                    <td><input name="req_date" type = "date" onchange="this.form.submit()"></td>
+                                    <td class="col-md-2"><input name="req_date" type = "date" onchange="this.form.submit()"></td>
                                 </tr>
                                 <tr>
                                     <td>Departure Time:
