@@ -1,8 +1,8 @@
 <?php
 require 'config.php';
-if(!empty($_SESSION["u_id"])){
-    $id = $_SESSION["u_id"];
-    $result = mysqli_query($conn,"SELECT * FROM tms_user WHERE u_id = $id");
+if(!empty($_SESSION["user_id"])){
+    $id = $_SESSION["user_id"];
+    $result = mysqli_query($conn,"SELECT * FROM user WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
 }else{
     header("Location: userLogin.php");
