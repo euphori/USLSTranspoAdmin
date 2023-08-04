@@ -82,6 +82,9 @@ body {
 .p-top-0{
     padding-top: 0 !important;
 }
+.p-bot-0{
+    padding-bottom: 0 !important;
+}
 .ml-auto, .mx-auto{
     margin-left: auto !important;
 }

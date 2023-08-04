@@ -58,7 +58,7 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Reports</h1></span>
                 </div>
                 <div class="cardBody">
-                    <div class = "cardBody form-row center-items">
+                    <div class = "cardBody form-row center-items p-top-0 p-bot-0">
                         <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
                         <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
                         <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
@@ -66,8 +66,18 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <span class="float-left"><h1>Generate Report</h1></span>
+                    <span class="float-left"><h3>Generate Report (Summary - Depository)</h3></span>
                 </div>
+                <div class="cardBody">
+                    <form name = "reportForm" id="reportform" method="post">
+                    <table>
+                        <tr>
+                            <td>From: <input type = "date" name="datefrom" value readonly="" onclick="GetDate(this);"></td>
+                            <td>To: <input type = "date" name="dateto" value readonly="" onclick="GetDate(this);"> </td>
+                            <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>
+                        </tr>
+                    </table>
+                    </form>
             </div>
         </main>
         <footer>       

@@ -58,7 +58,7 @@ if(!empty($_SESSION["user_id"])){
                 <span class="float-left"><h1>Reports</h1></span>
                 </div>
                 <div class="cardBody">
-                    <div class = "cardBody form-row center-items">
+                    <div class = "cardBody form-row center-items p-top-0 p-bot-0">
                         <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
                         <a href = "adminReports_category.php"type = "button" class = "btn btn-success">By Category</a>
                         <a href = "adminReports_depo.php" type = "button" class = "btn btn-success">Summary(Depository)</a>
@@ -66,7 +66,23 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <span class="float-left"><h1>Generate Report</h1></span>
+                    <span class="float-left"><h3>Generate Report (By Category)</h3></span>
+                </div>
+                <div class="cardBody">
+                    <form name = "reportForm" id="reportform" method="post">
+                        <table>
+                            <tr>
+                                <td><select name="select_mode" required="yes" onchange="this.form.submit()">
+                                        <option>Select...</option>
+	                                    <option value="vehicle">Vehicles</option> 
+	                                    <option value="driver">Driver</option> 
+		                                <option value="requestor">Requestor</option>
+		                                <option value="acctno_amnt">Accounts</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
             </div>
         </main>
