@@ -177,9 +177,9 @@ if(isset($_POST["submit"])){
         
                                 $accnt_id = $row["accnt_id"];
                                 echo '<div class="item-cell">     
-                                    <button openForm class="btn btn-success">
+                                    <a class="btn btn-success" href = "updateAccounts.php?update_id='.$accnt_id.'">
                                     Change
-                                    </button>
+                                    </a>
                                     <a class="btn btn-danger" href = "delete.php?acc_delete_id='.$accnt_id.'">
                                     Remove
                                     </a>
@@ -251,9 +251,11 @@ if(isset($_POST["submit"])){
                 </form>
             </div>
         </dialog>
-
+       
+                    
        
         <script src="js/logoutModal.js"></script>
         <script src="js/formModal.js"></script>
+        
     </body>
 </html>

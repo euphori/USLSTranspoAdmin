@@ -77,34 +77,7 @@ if(isset($_POST["submit"])){
                 <div class="cardBody">
                 <button openForm class = "mb-3 btn btn-success">Create New Rates</button>
                 <div class="table" >
-                    <div class="column">
-                        <div class="header-cell" >
-                            <div class = "text-header-cell">ID</div>
-                        </div>
-                        <?php
-                            $sql = "SELECT * FROM vehicles";
-                            $result = $conn->query($sql);
-                            // Loop through the retrieved data and populate the table rows
-                            if ($result->num_rows > 0) {
-                                $counter = 1;
-                                while ($row = $result->fetch_assoc()) {
-                                    $data = $row["v_id"];
-                                    echo '<div class="item-cell">';
-                                    echo '<div class="text-item-cell">' .$data. '</div>';
-                                    echo '</div>';
-                                    $counter++;
-                                }
-                            } else {
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">No data found in the database.</div>';
-                                echo '</div>';
-                            }
-
-                        ?>
-        
-               
-                        
-                    </div>
+                    
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Vehicle Code</div>
@@ -331,9 +304,9 @@ if(isset($_POST["submit"])){
         
                                 $data = $row["v_id"];
                                 echo '<div class="item-cell">     
-                                    <button openForm class="btn btn-success">
+                                    <a class="btn btn-success" href = "updateVehicles.php?update_id='.$data.'">
                                     Change
-                                    </button>
+                                    </a>
                                     <a class="btn btn-danger" href = "delete.php?v_delete_id='.$data.'">
                                     Remove
                                     </a>

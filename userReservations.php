@@ -57,7 +57,7 @@ if(!empty($_SESSION["user_id"])){
                             <div class = "text-header-cell">#</div>
                         </div>
                         <?php
-                        $sql = "SELECT v_name from tms_vehicle";
+                        $sql = "SELECT v_name from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -88,7 +88,7 @@ if(!empty($_SESSION["user_id"])){
                             </button>
                         </div>
                         <?php
-                        $sql = "SELECT v_name from tms_vehicle";
+                        $sql = "SELECT v_name from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -115,7 +115,7 @@ if(!empty($_SESSION["user_id"])){
                            
                         </div>
                         <?php
-                        $sql = "SELECT v_driver from tms_vehicle";
+                        $sql = "SELECT v_driver from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -140,7 +140,7 @@ if(!empty($_SESSION["user_id"])){
                            
                         </div>
                         <?php
-                        $sql = "SELECT v_reg_no from tms_vehicle";
+                        $sql = "SELECT v_reg_no from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -166,7 +166,7 @@ if(!empty($_SESSION["user_id"])){
                            
                         </div>
                         <?php
-                        $sql = "SELECT v_pass_no from tms_vehicle";
+                        $sql = "SELECT v_pass_no from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -191,7 +191,7 @@ if(!empty($_SESSION["user_id"])){
                            
                         </div>
                         <?php
-                        $sql = "SELECT v_status from tms_vehicle";
+                        $sql = "SELECT v_status from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
@@ -216,7 +216,7 @@ if(!empty($_SESSION["user_id"])){
                            
                         </div>
                         <?php
-                        $sql = "SELECT v_id from tms_vehicle";
+                        $sql = "SELECT v_id from reservation";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {

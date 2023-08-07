@@ -268,9 +268,9 @@ if(isset($_POST["submit"])){
         
                                 $data = $row["rate_id"];
                                 echo '<div class="item-cell">     
-                                    <button openForm class="btn btn-success">
+                                    <a class="btn btn-success" href = "updateRates.php?update_id='.$data.'">
                                     Change
-                                    </button>
+                                    </a>
                                     <a class="btn btn-danger" href = "delete.php?r_delete_id='.$data.'">
                                     Remove
                                     </a>
