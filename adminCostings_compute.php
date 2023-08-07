@@ -9,6 +9,44 @@ if(!empty($_SESSION["user_id"])){
 }
 ?>
 
+
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM requisition WHERE req_id = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+$req_id = $id;
+$requestor = $row['requestor'];
+$contact = $row['contact'];
+$email = $row['email'];
+$date_of_trip = $row['date_of_trip'];
+$destination = $row['destination'];
+$purpose = $row['purpose'];
+$boarding = $row['boarding'];
+$pass_no = $row['pass_no'];
+$date_reserve = $row['date_reserve'];
+if(isset($_POST['submit'])){
+    $requestor = $_POST['requestor'];
+    $contact = $_POST['contact'];
+    $email = $_POST['email'];
+    $date_of_trip = $_POST['date_of_trip'];
+    $destination = $_POST['destination'];
+    $purpose = $_POST['purpose'];
+    $boarding = $_POST['boarding'];
+    $pass_no =$_POST['pass_no'];
+    $id = $_GET['ticket_id'];
+    $sql = "UPDATE requisition set requestor = '$requestor', contact = '$contact',email = '$email' ,date_of_trip = '$date_of_trip', 
+    destination = '$destination', purpose = '$purpose' , boarding = '$boarding', pass_no = $pass_no WHERE req_id = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminCostings_compute.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,15 +98,15 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "form-row center-items mb-3">
                         <div class="card col-md-4">
                             <div class="cardHeader"><h4>Requisition Number</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"> <?php echo  $req_id?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date of Trip(s)</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_of_trip?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date Reserved</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_reserve?></div>
                     </div>
                 </div>
                 <div class = "form-row">
@@ -76,27 +114,27 @@ if(!empty($_SESSION["user_id"])){
                     <div class="cardHeader"><h3>Request Details</h3></div>
                         <table>
                             <tr>
-                                <td><b>Requestor:</b></td>
+                                <td><b>Requestor: <?php echo  $requestor?></b></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Contact No:</b></td>
+                                <td><b>Contact No: <?php echo  $contact?></b></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Destination:</b></td>
+                                <td><b>Destination: <?php echo  $destination?></b></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Purpose of Trip:</b></td>
+                                <td><b>Purpose of Trip: <?php echo  $purpose?></b></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Boarding Area:</b></td>
+                                <td><b>Boarding Area: <?php echo  $boarding?></b></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>No. of Passenger:</b></td>
+                                <td><b>No. of Passenger: <?php echo  $pass_no?></b></td>
                                 <td></td>
                             </tr>
                         </table>
@@ -109,30 +147,30 @@ if(!empty($_SESSION["user_id"])){
                     <table>
                             <tr>
                                 <td><b>Requestor:</b></td>
-                                <td><input required name="requestor"  value="" ></td>
+                                <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
                             </tr>
                             <tr>
                                 <td><b>Contact No:</b></td>
-                                <td><input required name="contact"  value="" ></td>
+                                <td><input required name="contact"  value=<?php echo  $contact?> ></td>
                             </tr>
                             <tr>
                                 <td><b>Destination:</b></td>
-                                <td><input required name="destination"  value="" ></td>
+                                <td><input required name="destination"  value=<?php echo  $destination?> ></td>
                             </tr>
                             <tr>
                                 <td><b>Purpose of Trip:</b></td>
-                                <td><input required name="purpose"  value="" ></td>
+                                <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
                             </tr>
                             <tr>
                                 <td><b>Boarding Area:</b></td>
-                                <td><input required name="boarding"  value="" ></td>
+                                <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
                             </tr>
                             <tr>
                                 <td><b>No. of Passenger:</b></td>
-                                <td><input required name="passenger"  value="" ></td>
+                                <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
                             </tr>
                     </table>
-                    <button type = "submit" class="btn btn-success mb-3">Update</button>
+                    <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
                 </form>
                 </div>
                 <!--Hidden Form-->
