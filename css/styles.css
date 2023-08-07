@@ -79,6 +79,10 @@ body {
 
 }
 
+.hidden{
+    display: none !important;
+}
+
 /*- MARGINS-*/
 .p-top-0{
     padding-top: 0 !important;
@@ -94,6 +98,9 @@ body {
 }
 .mt-5, .my-5 {
     margin-top: 3rem !important;
+}
+.mt-3{
+    margin-top: 1rem !important;
 }
 .mb-0{
     margin-bottom: 0 !important;
@@ -584,6 +591,9 @@ footer{
 /*- TABLES -*/
 th, td{
     padding: 5px;
+}
+th{
+    background-color: rgba(157.25, 157.25, 157.25, 0.40);
 }
 .table-responsive{
     display: block;

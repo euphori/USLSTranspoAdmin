@@ -54,7 +54,7 @@ if(!empty($_SESSION["user_id"])){
         <main class="vertical">
             <div class="card">
                 <div class="cardHeader">
-                <span class="float-left"><h1>Review Reservation</h1></span>
+                <span class="float-left"><h1>Compute Costing</h1></span>
                 </div>
                 <div class="cardBody">
                     <div class = "form-row center-items mb-3">
@@ -71,47 +71,80 @@ if(!empty($_SESSION["user_id"])){
                             <div class="cardBody"></div>
                     </div>
                 </div>
-                <div class = "form-row center-items mb-3">
-                    <div class = "card col-md-3">
+                <div class = "form-row">
+                    <div class = "card col-md-2">
+                    <div class="cardHeader"><h3>Request Details</h3></div>
                         <table>
                             <tr>
                                 <td><b>Requestor:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Contact No:</b></td>
-                                <td>Mister Big</td>
-                            </tr>
-                            <tr>
-                                <td><b>Email:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Destination:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Purpose of Trip:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Boarding Area:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>No. of Passenger:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                         </table>
+                        <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
                     </div>
-                    <div class = "cardBody">
+                    <!--Hidden Form-->
+                <div id="requestInfo" class="card hidden col-md-3 mb-3">
+                    <div class="cardHeader"><b>Edit Request Details</b></div>
+                <form method="POST">
+                    <table>
+                            <tr>
+                                <td><b>Requestor:</b></td>
+                                <td><input required name="requestor"  value="" ></td>
+                            </tr>
+                            <tr>
+                                <td><b>Contact No:</b></td>
+                                <td><input required name="contact"  value="" ></td>
+                            </tr>
+                            <tr>
+                                <td><b>Destination:</b></td>
+                                <td><input required name="destination"  value="" ></td>
+                            </tr>
+                            <tr>
+                                <td><b>Purpose of Trip:</b></td>
+                                <td><input required name="purpose"  value="" ></td>
+                            </tr>
+                            <tr>
+                                <td><b>Boarding Area:</b></td>
+                                <td><input required name="boarding"  value="" ></td>
+                            </tr>
+                            <tr>
+                                <td><b>No. of Passenger:</b></td>
+                                <td><input required name="passenger"  value="" ></td>
+                            </tr>
+                    </table>
+                    <button type = "submit" class="btn btn-success mb-3">Update</button>
+                </form>
+                </div>
+                <!--Hidden Form-->
+                </div>
+                <div class = "cardBody">
                         <div class = "card mb-3">
                             <table>
                                 <tr>
+                                    <th>Departure</th>
+                                    <th>Arrival</th>
                                     <th>Vehicle(s)</th>
-                                    <th>Brand/Model</th>
-                                    <th>Seating Capacity</th>
-                                    <th>Plate Number</th>
+                                    <th>Driver</th>
                                 </tr>
                                 <tr align = "center">
                                     <td>A</td>
@@ -122,20 +155,7 @@ if(!empty($_SESSION["user_id"])){
                                 
                             </table>
                         </div>
-                        <div class = "card">
-                            <table>
-                                <tr>
-                                    <th>Payment Mode</th>
-                                    <th>Check/OR #</th>
-                                </tr>
-                                <tr align = "center">
-                                    <td>Office Account</td>
-                                    <td>123456</td>
-                                </tr>
-                            </table>
-                        </div>
                     </div>
-                </div>
                 <div class = "form-row center-items mb-3">
                     <div class="card">
                     <table>
@@ -155,13 +175,111 @@ if(!empty($_SESSION["user_id"])){
                         </tr>
                     </table>
                     </div>
-                    
                 </div>
-                <div class = "form-row float-right">
-                    <button class = "btn btn-danger">Cancel Request</button>
-                    <button class = "btn btn-success">Assign Driver(s)</button>
+                <div class = "form-row center-items mb-3">
+                    <div class="card">
+                    <table>
+                        <tr>
+                            <th>Vehicle Code</th>
+                            <th>Actual Departure Time</th>
+                            <th>Odometer (Out)</th>
+                            <th>Actual Arrival Time</th>
+                            <th>Odometer (In)</th>
+                            <th>Waiting Time</th>
+                            <th>Guard on Duty</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr align ="center">
+                            <td>INN</td>
+                            <td>8:32 AM</td>
+                            <td>277148</td>
+                            <td>5:37 PM</td>
+                            <td>277185</td>
+                            <td>2</td>
+                            <td>Teddy Long</td>
+                            <td><button data-target="costForm" class = "btn btn-success showButton">Add/Edit</button></td>
+                        </tr>
+                    </table>
+                    </div>
                 </div>
-            </div>
+                <!--Hidden Form-->
+                <div id="costForm" class = "form-row hidden center-items mb-3">
+                    <div class="card">
+                    <form method="post">
+                    <table>
+                        <tr>
+                            <th>Vehicle Code</th>
+                            <th>Actual Departure Time</th>
+                            <th>Odometer (Out)</th>
+                            <th>Actual Arrival Time</th>
+                            <th>Odometer (In)</th>
+                            <th>Waiting Time</th>
+                            <th>Guard on Duty</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr align ="center">
+                            <td>INN</td>
+                            <td><input required name="departure" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="odo_out" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="arrival" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="odo_in" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="wait_time" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="driver" class="form-control col-md-2" value="" ></td>
+                            <td><button type= "submit" class = "btn btn-success">Update</a></td>
+                        </tr>
+                    </table>
+                    </form>
+                    </div>
+                </div>
+                <!--Hidden Form-->
+                <div class = "form-row center-items mb-3">
+                    <div class="card">
+                    <table class="mb-3">
+                        <tr>
+                            <th>Vehicle(s)</th>
+                            <th>Distance</th>
+                            <th>Charges</th>
+                        </tr>
+                        <tr align ="center">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <td><b>Total Charges<b></td>
+                        <th>0.00</th>
+                    </table>
+                    </div>
+                <div class = "card">
+                            <table>
+                                <tr>
+                                    <th>Payment Mode</th>
+                                    <th>Account Name</th>
+                                    <th>Account #/OR #</th>
+                                    <th>Amount</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                
+                                <tr align = "center">
+                                <form method="post">
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="depository">Depository</option>
+                                            <option value="cash">Cash</option>
+                                        </select>
+                                    </td>
+                                    <td><input readonly name="account" class="form-control col-md-2" value=""></td>
+                                    <td><input required name="or_num" class="form-control col-md-2" value=""></td>
+                                    <td><input required name="amount" class="form-control col-md-2" value=""></td>
+                                    <td><input name="update_or" type="submit" class="btn btn-success" value="Update"></td>
+                                    <td><input name="excelreport" type="submit" class="btn btn-success" value="Generate Statement"></td>
+                                    </form>
+                                </tr>
+                                
+                            </table>
+                        </div>
         </main>
         <footer>       
             <div class ="footer-container">
@@ -186,5 +304,6 @@ if(!empty($_SESSION["user_id"])){
             </div>
           </dialog>
         <script src="js/logoutModal.js"></script>
+        <script src="js/hiddenView.js"></script>
     </body>
 </html>
