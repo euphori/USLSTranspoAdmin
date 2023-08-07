@@ -5,9 +5,10 @@ if(!empty($_SESSION["user_id"])){
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
 }else{
-    header("Location: adminLogin.php");
+    header("Location: userLogin.php");
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +40,7 @@ if(!empty($_SESSION["user_id"])){
             <div class ="card card-sidebar">
             <nav class="sidebar">
             <ul class="ul-vertical">
-                <li><a href="#">Home</a></li>
+                <li><a href="adminDashboard.php">Home</a></li>
                 <li><a href="adminRequisition.php">Requisition</a></li>
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
@@ -54,47 +55,12 @@ if(!empty($_SESSION["user_id"])){
             </div>
             <div class="card">
                 <div class="cardHeader">
-                <span class="float-left"><h1>Dashboard</h1></span>
-                <span class="float-right">Welcome, <!--?php echo  $row["a_name"]?-->!</span>
+                <span class="float-left"><h1>Cancelled Trips</h1></span>
                 </div>
                 <div class="cardBody">
-                    <div class="form-row center-items mb-3">
-                            <div class="card col-md-4 h100">
-                                <div class="cardHeader text-white bg-lasalle-grn">Canceled Bookings</div>
-                                <a class="cardFooter bg-lasalle-grnAlt" href="adminCancelled.php">
-                                    <span class="float-left text-white">View Details</span>
-                                    <span class="float-right text-white">➤</span>
-                                </a>
-                            </div>
-                            <div class="card col-md-4 h100">
-                                <div class="cardHeader text-white bg-lasalle-grn">Trip Schedule</div>
-                                <a class="cardFooter bg-lasalle-grnAlt" href="adminTripSched.php">
-                                    <span class="float-left text-white">View Details</span>
-                                    <span class="float-right text-white">➤</span>
-                                </a>
-                            </div>
-                    </div>
-            </div>
-            <div class="cardHeader">
-                <span class="float-left"><h3>Online Requests</h3></span>
-            </div>
-            <div class="cardBody">
-
-            </div>
-            <div class="cardHeader">
-                <span class="float-left"><h3>Reservations</h3></span>
-            </div>
-            <div class="cardBody">
                     
+                </div>
             </div>
-            <div class="cardHeader">
-                <span class="float-left"><h3>Trip Tickets</h3></span>
-            </div>
-            <div class="cardBody">
-                    
-            </div>
-                
-                
         </main>
         <footer>       
             <div class ="footer-container">
