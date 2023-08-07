@@ -55,7 +55,7 @@ if(!empty($_SESSION["user_id"])){
             </div>
             <div class="card">
                 <div class="cardHeader">
-                <span class="float-left"><h1>Cancelled Trips</h1></span>
+                <span class="float-left"><h1>Trip Schedule</h1></span>
                 </div>
                 <div class="cardBody">
                     
