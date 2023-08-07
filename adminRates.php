@@ -74,7 +74,52 @@ if(isset($_POST["submit"])){
                 <span class="float-left"><h1>Rates</h1></span>
                 </div>
                 <div class="cardBody">
-                <button openForm class = "mb-3 btn btn-success">Create New Rates</button>
+                <button data-target="ratesForm" class = "mb-3 btn btn-success showButton">Create New Rates</button>
+                <div id="ratesForm" class="card hidden col-md-2">
+                    <div class="cardHeader"><h3 class>Create New Rates</h3></div>
+                    <div class="cardBody">
+                    <form method="POST">
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Vehicle Code</label>
+                                        <input required name="v_type" class="form-control" placeholder="Vehicle Code">
+                                    </div>
+                                    <div class = "col-md-2">
+                                         <label>Name/Brand</label>
+                                         <input required name="v_desc" class="form-control" placeholder="Vehicle Type">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Gas Rate</label>
+                                        <input required name="gas_rate" class="form-control" placeholder="Gas Rate">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Flag-Down Rate</label>
+                                        <input required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Succeeding Rate</label>
+                                        <input required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Waiting Rate</label>
+                                        <input required name="wait_rate" class="form-control" placeholder="Waiting Rate">
+                                    </div>
+                                </div>
+                            </div>
+                            <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
                 <div class="table" >
                     <div class="column">
                         <div class="header-cell" >
@@ -308,53 +353,6 @@ if(isset($_POST["submit"])){
                     </div>
             </div>
         </footer>
-        <!--FORM MODAL-->
-        <dialog newForm class="modal">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Create New Rates</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Vehicle Code</label>
-                                <input required name="v_type" class="form-control" placeholder="Vehicle Code">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Name/Brand</label>
-                                <input required name="v_desc" class="form-control" placeholder="Vehicle Type">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Gas Rate</label>
-                                <input required name="gas_rate" class="form-control" placeholder="Gas Rate">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Flag-Down Rate</label>
-                                <input required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Succeeding Rate</label>
-                                <input required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Waiting Rate</label>
-                                <input required name="wait_rate" class="form-control" placeholder="Waiting Rate">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                    <button cancelForm class="btn btn-danger">Cancel</button>
-                </form>
-            </div>
-        </dialog>
         <!--LOGOUT MODAL-->
         <dialog modalLogout class="modal">
             <div class="modal-content">
@@ -367,6 +365,6 @@ if(isset($_POST["submit"])){
             </div>
           </dialog>
         <script src="js/logoutModal.js"></script>
-        <script src="js/formModal.js"></script>
+        <script src="js/hiddenView.js"></script>
     </body>
 </html>

@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
                 <li><a href="adminCostings.php">Costing</a></li>
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="#">Drivers</a></li>
+                <li><a href="adminDrives.php">Drivers</a></li>
                 <li><a href="adminAccounts.php">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
@@ -73,7 +73,39 @@ if(isset($_POST["submit"])){
                 <span class="float-left"><h1>Drivers</h1></span>
                 </div>
                 <div class="cardBody">
-                <button openForm class = "btn btn-success mb-3">Create a New Record</button>
+                <button data-target="driverForm"class = "btn btn-success mb-3 showButton">Create a New Record</button>
+                <div id="driverForm" class="card hidden col-md-2">
+                <div class="cardHeader"><h3>Add a New Account<h3></div>
+                    <div class="cardBody">
+                        <form method="POST">
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Driver's First Name</label>
+                                        <input required name="d_fname" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Driver's Last Name</label>
+                                        <input required name="d_lname" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group col-md-2">
+                                <label>Driver's Contact Number</label>
+                                <input required name="d_contact" class="form-control" placeholder="Contact">
+                            </div>
+                            <div class = "form-group col-md-2">
+                                <label>Driver's Status</label> 
+                                <select class="form-control" name="d_status">
+                                    <option value="regular">Regular</option>
+                                    <option value="romac">ROMAC</option>
+                                </select>
+                            </div>
+                        <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
                 <div class="table" >
                     <div class="column">
                         <div class="header-cell" >
@@ -310,35 +342,7 @@ if(isset($_POST["submit"])){
         <!--FORM MODAL-->
         <dialog newForm class="modal">
             <div class ="modalContainer">
-                <div><h3 class="alt">Add a New Account</h3></div>
-                <form method="POST">
-                <div class = "form-group">
-                    <div class = "form-row">
-                        <div class = "col-md-2">
-                            <label class="alt">Driver's First Name</label>
-                            <input required name="d_fname" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class = "col-md-2">
-                            <label class="alt">Driver's Last Name</label>
-                            <input required name="d_lname" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    </div>
-                    <div class = "form-group col-md-2">
-                        <label class="alt">Driver's Contact Number</label>
-                        <input required name="d_contact" class="form-control" placeholder="Contact">
-                    </div>
-                    <div class = "form-group col-md-2">
-                            <label class="alt">Driver's Status</label> 
-                            <select class="form-control" name="d_status">
-                                <option value="regular">Regular</option>
-                                <option value="romac">ROMAC</option>
-                            </select>
-                    </div>
-                        <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                        <button cancelForm class="btn btn-danger">Cancel</button>
-                    </div>
-                </form>
+                
             </div>
         </dialog>
         <!--LOGOUT MODAL-->
@@ -353,6 +357,6 @@ if(isset($_POST["submit"])){
             </div>
           </dialog>
         <script src="js/logoutModal.js"></script>
-        <script src="js/formModal.js"></script>
+        <script src="js/hiddenView.js"></script>
     </body>
 </html>
