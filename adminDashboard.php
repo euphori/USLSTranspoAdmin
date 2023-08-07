@@ -68,7 +68,7 @@ if(!empty($_SESSION["user_id"])){
                             </div>
                             <div class="card col-md-4 h100">
                                 <div class="cardHeader text-white bg-lasalle-grn">Trip Schedule</div>
-                                <a class="cardFooter bg-lasalle-grnAlt" href="userReservations.php">
+                                <a class="cardFooter bg-lasalle-grnAlt" href="adminTripSched.php">
                                     <span class="float-left text-white">View Details</span>
                                     <span class="float-right text-white">➤</span>
                                 </a>
