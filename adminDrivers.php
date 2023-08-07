@@ -270,7 +270,7 @@ if(isset($_POST["submit"])){
                             while ($row = $result->fetch_assoc()) {
                                 $data = $row["d_id"];
                                 echo '<div class="item-cell">
-                                    <a class="btn btn-success" href = "reviewRes.php?v_id=' .$row["d_id"] . '">
+                                    <a class="btn btn-success" href = "updateDrivers.php?update_id=' .$row["d_id"] . '">
                                     Change
                                     </a>
                                     <a class="btn btn-danger" href = "delete.php?d_delete_id='.$row["d_id"].'">
@@ -313,16 +313,16 @@ if(isset($_POST["submit"])){
                 <div><h3 class="alt">Add a New Account</h3></div>
                 <form method="POST">
                 <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Driver's First Name</label>
-                                <input required name="d_fname" class="form-control" placeholder="First Name">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Driver's Last Name</label>
-                                <input required name="d_lname" class="form-control" placeholder="Last Name">
-                            </div>
+                    <div class = "form-row">
+                        <div class = "col-md-2">
+                            <label class="alt">Driver's First Name</label>
+                            <input required name="d_fname" class="form-control" placeholder="First Name">
                         </div>
+                        <div class = "col-md-2">
+                            <label class="alt">Driver's Last Name</label>
+                            <input required name="d_lname" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
                     </div>
                     <div class = "form-group col-md-2">
                         <label class="alt">Driver's Contact Number</label>
@@ -334,7 +334,7 @@ if(isset($_POST["submit"])){
                                 <option value="regular">Regular</option>
                                 <option value="romac">ROMAC</option>
                             </select>
-                            </div>
+                    </div>
                         <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
                         <button cancelForm class="btn btn-danger">Cancel</button>
                     </div>
