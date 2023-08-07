@@ -9,6 +9,8 @@ if(!empty($_SESSION["user_id"])){
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,74 +18,85 @@ if(!empty($_SESSION["user_id"])){
         <meta charset = "utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name = "viewport" content = "width=device-width" initial-scale= 1, shrink-to-fit="no">
-        <title>Dashboard</title>
+        <title>Transport Reservations</title>
 
-        <link href="css/styles.css" rel="stylesheet">
-        <link href="css/datatables.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <header>
             <nav>
                 <ul>
+                    <li><a href="userDashboard.php">Dashboard</a></li>
+                    <li><a href="userBookings.php">Bookings</a></li>
+                    <li><a href="#">Transport Reservations</a></li>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <a href="#">Account ⮟</a>
+                        <ul class = "dropdown">
+                            <li><a href="userProfile.php">Profile</a></li>
+                            <li><a openLogout>Log Out</a></li>
+                        </ul>
                     </li>
-                    <li><a openLogout>Log Out</a></li>
                 </ul>
             </nav>
             <div class = "logo-placeholder">
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
-        <main class="vertical">
-            <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="#">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
-            </div>
+        <main>
             <div class="card">
-                <div class="cardHeader mb-3">
-                <span class="float-left"><h1>Requisition</h1></span>
+                <div class="cardHeader"><h1>Transport Reservations</h1></div>
+                
+            </div>
+            <div class="form-field">
+                    <div class="search-label" >Search:</div>
+                        <input type = "text" placeholder="Search a booking">
                 </div>
-                <div class = "cardBody form-row mb-3 center-items p-top-0 p-bot-0">
-                    <a href = "adminRequisition_spec.php" type = "button" class = "btn btn-success">Specific Time</a>
-                    <a href = "adminRequisition_whole.php"type = "button" class = "btn btn-success">Whole Day</a>
-                    <a href = "adminRequisition_whole2.php" type = "button" class = "btn btn-success">Whole Day Specific Dates</a>
-                </div>
-                <div class="cardHeader">
-                        <span class="float-left"><h3>Online Requests</h3></span>
-                </div>
-                <div class="cardBody">
                 <div class="table" >
-                    
-                    <div class="column-2">
+                    <div class="column">
                         <div class="header-cell" >
-                            <div class = "text-header-cell">Requisition Number</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
+                            <div class = "text-header-cell">#</div>
                         </div>
                         <?php
-                        $sql = "SELECT * FROM requisition";
+                        $sql = "SELECT v_name from tms_vehicle";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
                             $counter = 1;
                             while ($row = $result->fetch_assoc()) {
-                                $data = $row["req_id"];
+                                $data = $row["v_name"];
                                 echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '<div class="text-item-cell">' .$counter. '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo '<div class="item-cell">';
+                            echo '<div class="text-item-cell">No data found in the database.</div>';
+                            echo '</div>';
+                        }
+
+                        ?>
+        
+               
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Vehicle Name</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
+                        </div>
+                        <?php
+                        $sql = "SELECT v_name from tms_vehicle";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_name"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $row["v_name"] . '</div>';
                                 echo '</div>';
                                 $counter++;
                             }
@@ -98,28 +111,50 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                     <div class="column-2">
                         <div class="header-cell" >
-                            <div class = "text-header-cell">Date of Trip(s)</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
+                            <div class = "text-header-cell">Driver Name</div>
+                           
                         </div>
                         <?php
-                        $sql = "SELECT * FROM requisition";
+                        $sql = "SELECT v_driver from tms_vehicle";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
                             $counter = 1;
                             while ($row = $result->fetch_assoc()) {
-                                $data = $row["date_of_trip"];
+                                $data = $row["v_driver"];
                                 echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '<div class="text-item-cell">' . $row["v_driver"] . '</div>';
                                 echo '</div>';
                                 $counter++;
                             }
                         } else {
                             echo "No data found in the database.";
                         }
-
+                        ?>
+        
+                        
+                    </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Reg No.</div>
+                           
+                        </div>
+                        <?php
+                        $sql = "SELECT v_reg_no from tms_vehicle";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_reg_no"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell">' . $row["v_reg_no"] . '</div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
                         ?>
         
                
@@ -127,97 +162,88 @@ if(!empty($_SESSION["user_id"])){
                     </div>
                     <div class="column-2">
                         <div class="header-cell" >
-                            <div class = "text-header-cell">Date Reserved</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
+                            <div class = "text-header-cell">Seats</div>
+                           
                         </div>
                         <?php
-                        $sql = "SELECT * FROM requisition";
+                        $sql = "SELECT v_pass_no from tms_vehicle";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
                             $counter = 1;
                             while ($row = $result->fetch_assoc()) {
-                                $data = $row["date_reserve"];
+                                $data = $row["v_pass_no"];
                                 echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '<div class="text-item-cell">' . $row["v_pass_no"] . '</div>';
                                 echo '</div>';
                                 $counter++;
                             }
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
         
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell" >
-                            <div class = "text-header-cell">Reservation(s) of</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM requisition";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["requestor"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
-
-                        ?>
         
-               
-                        
                     </div>
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Status</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
+                           
                         </div>
                         <?php
-                        $sql = "SELECT * FROM requisition";
+                        $sql = "SELECT v_status from tms_vehicle";
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
                             $counter = 1;
                             while ($row = $result->fetch_assoc()) {
-                                $data = $row["req_mark"];
+                                $data = $row["v_status"];
                                 echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
+                                echo '<div class="text-item-cell">' . $row["v_status"] . '</div>';
                                 echo '</div>';
                                 $counter++;
                             }
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
         
-               
                         
                     </div>
-                    
-                
-                </div>    
-                </div>
-                    
-            </div>
+                    <div class="column-2">
+                        <div class="header-cell" >
+                            <div class = "text-header-cell">Action</div>
+                           
+                        </div>
+                        <?php
+                        $sql = "SELECT v_id from tms_vehicle";
+                        $result = $conn->query($sql);
+                        // Loop through the retrieved data and populate the table rows
+                        if ($result->num_rows > 0) {
+                            $counter = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                $data = $row["v_id"];
+                                $v_id = $row["v_id"];
+                                echo '<div class="item-cell">';
+                                echo '<div class="text-item-cell"> 
+                                <div>
+                                <img class="bookmark-icon" src = assets/Bookmark_fill@3x.png>
+                                </div>
+                                <a href="confirmRes.php?v_id=' . $v_id . '" >
+                                <button  type="button" class="booking-button">
+                                <div class="booking-button-text" >Book Now</div>
+                                </button>
+                                </a></div>';
+                                echo '</div>';
+                                $counter++;
+                            }
+                        } else {
+                            echo "No data found in the database.";
+                        }
+                        ?>
+        
+                        
+                    </div>
         </main>
         <footer>       
             <div class ="footer-container">
@@ -236,7 +262,7 @@ if(!empty($_SESSION["user_id"])){
               <div><h1 class="alt">Confirmation</h1></div>
               <div><p class="alt">Are you sure you are ready to Log Out?</p></div>
               <div class="profileBtnContainer">
-                  <a class="btn btn-success" href="adminLogin.php">OK</a>
+                  <a class="btn btn-success" href="userLogin.php">OK</a>
                   <button cancelLogout class="btn btn-danger">Cancel</button>
               </div>
             </div>

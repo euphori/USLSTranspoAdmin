@@ -72,8 +72,8 @@ if(!empty($_SESSION["user_id"])){
                     <form name = "reportForm" id="reportform" method="post">
                     <table>
                         <tr>
-                            <td>From: <input type = "date" name="datefrom" value readonly="" onclick="GetDate(this);"></td>
-                            <td>To: <input type = "date" name="dateto" value readonly="" onclick="GetDate(this);"> </td>
+                            <td>From: <input type = "date" name="datefrom" value ="" onclick="GetDate(this);"></td>
+                            <td>To: <input type = "date" name="dateto" value ="" onclick="GetDate(this);"> </td>
                             <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>
                         </tr>
                     </table>

@@ -72,8 +72,8 @@ if(!empty($_SESSION["user_id"])){
                     <form name = "reportForm" id="reportform" method="post">
                     <table>
                         <tr>
-                            <td>From: <input type = "date" name="datefrom" value readonly="" onclick="GetDate(this);"></td>
-                            <td>To: <input type = "date" name="dateto" value readonly="" onclick="GetDate(this);"> </td>
+                            <td>From: <input type = "date" name="datefrom" value ="" onclick="GetDate(this);"></td>
+                            <td>To: <input type = "date" name="dateto" value="" onclick="GetDate(this);"> </td>
                             <td>Sort by:
                                  <select>
                                     <option value="req_no">Req No.</option>

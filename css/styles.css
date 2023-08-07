@@ -63,6 +63,7 @@ header, footer{
     width: inherit;
     width: 100%;
     margin: auto;
+    z-index: 2;
 }
 
 body {
@@ -336,7 +337,7 @@ header{
     mix-blend-mode: normal;
     padding-left: 20px;
     padding-right: 20px;
-    z-index: 1;
+    z-index: 2;
 }
 nav{
     justify-content: flex-start; 
@@ -831,6 +832,20 @@ th, td{
     overflow: hidden;
     position: relative;
     width: 100%;
+
+}
+.table-fixed {
+   
+    align-items: flex-start;
+    border: 1px solid;
+    border-color: #3a4f0c;
+    border-radius: 12px;
+    display: flex;
+
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: auto;
 }
 
 .column {
@@ -854,6 +869,25 @@ th, td{
     padding: 12px 24px;
     position: relative;
 }
+
+
+.header-cell-sticky {
+    align-items: center;
+    align-self: stretch;
+    background-color: #5e604b;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #243303;
+    display: flex;
+    gap: 12px;
+    height: 44px;
+    padding: 12px 24px;
+    position: sticky;
+    z-index: 1;
+    top:0 ;
+
+}
+
 
 .text-header-cell {
     flex: 1 1 0; 
