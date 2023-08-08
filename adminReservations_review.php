@@ -9,6 +9,7 @@ if(!empty($_SESSION["user_id"])){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -76,33 +77,34 @@ if(!empty($_SESSION["user_id"])){
                         <table>
                             <tr>
                                 <td><b>Requestor:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Contact No:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Email:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Destination:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Purpose of Trip:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Boarding Area:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>No. of Passenger:</b></td>
-                                <td>Mister Big</td>
+                                <td></td>
                             </tr>
                         </table>
+                        <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
                     </div>
                     <div class = "cardBody">
                         <div class = "card mb-3">
@@ -114,28 +116,87 @@ if(!empty($_SESSION["user_id"])){
                                     <th>Plate Number</th>
                                 </tr>
                                 <tr align = "center">
-                                    <td>A</td>
-                                    <td>B</td>
-                                    <td>C</td>
-                                    <td>D</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                                
                             </table>
                         </div>
-                        <div class = "card">
-                            <table>
+                        <div class = "card mb-3">
+                            <table class="table-responsive">
                                 <tr>
-                                    <th>Payment Mode</th>
-                                    <th>Check/OR #</th>
+                                    <td><b>Payment Mode:</b></td>
+                                    <td></td>
                                 </tr>
-                                <tr align = "center">
-                                    <td>Office Account</td>
-                                    <td>123456</td>
+                                <tr>
+                                    <td><b>Account Name:</b></td>
+                                    <td></td>
                                 </tr>
                             </table>
+                            <button data-target="accountInfo" class="btn btn-success showButton">Edit Details</button>
                         </div>
+                        <!--Hidden Form-->
+                    <div id="accountInfo" class="card hidden mb-3">
+                        <div class="cardHeader"><b>Edit Account Details</b></div>
+                        <form method="post">
+                        <table class="table-responsive">
+                                <tr>
+                                    <td><b>Payment Mode:</b></td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="depository">Depository</option>
+                                            <option value="cash">Cash</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Account Name:</b></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </form>
+                        
+                    </div>
+                    <!--Hidden Form-->
                     </div>
                 </div>
+                <!--Hidden Form-->
+                <div id="requestInfo" class="card hidden col-md-2 mb-3">
+                        <div class="cardHeader"><b>Edit Request Details</b></div>
+                        <div class="cardBody">
+                            <form method="POST">
+                                <table>
+                                    <tr>
+                                        <td><b>Requestor:</b></td>
+                                        <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Contact No:</b></td>
+                                        <td><input required name="contact"  value=<?php echo  $contact?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Destination:</b></td>
+                                        <td><input required name="destination"  value=<?php echo  $destination?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Purpose of Trip:</b></td>
+                                        <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Boarding Area:</b></td>
+                                        <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>No. of Passenger:</b></td>
+                                        <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
+                                    </tr>
+                                </table>
+                                <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!--Hidden Form-->
                 <div class = "form-row center-items mb-3">
                     <div class="card">
                     <table>
@@ -147,10 +208,10 @@ if(!empty($_SESSION["user_id"])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td>8:00 AM</td>
-                            <td>5:00 PM</td>
-                            <td>Avanza</td>
-                            <td>Don Quixote</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
                         </tr>
                     </table>
@@ -186,5 +247,6 @@ if(!empty($_SESSION["user_id"])){
             </div>
           </dialog>
         <script src="js/logoutModal.js"></script>
+        <script src="js/hiddenView.js"></script>
     </body>
 </html>
