@@ -85,11 +85,11 @@ if(isset($_POST['submit'])){
                             <div class = "form-row">
                                 <div class = "col-md-2">
                                     <label>Account Number</label>
-                                    <input required value = <?php echo  $accnt_no?> name="accnt_no" class="form-control" placeholder="Account Number">
+                                    <input required value = "<?php echo  $accnt_no?>" name="accnt_no" class="form-control" placeholder="Account Number">
                                 </div>
                                 <div class = "col-md-2">
                                     <label>Office</label>
-                                    <input required  value = <?php echo  $accnt_name?> name="accnt_name" class="form-control" placeholder="Office">
+                                    <input required  value ="<?php echo  trim($accnt_name)?>" name="accnt_name" class="form-control" placeholder="Office">
                                 </div>
                             </div>
                         </div>

@@ -93,11 +93,11 @@ if(isset($_POST['submit'])){
                             <div class = "form-row">
                                 <div class = "col-md-2">
                                     <label class="alt">Vehicle Code</label>
-                                    <input value=<?php echo  $v_type?> required name="v_type" class="form-control" placeholder="Vehicle Code">
+                                    <input value="<?php echo  $v_type?>" required name="v_type" class="form-control" placeholder="Vehicle Code">
                                 </div>
                                 <div class = "col-md-2">
                                     <label class="alt">Name/Brand</label>
-                                    <input value=<?php echo  $v_desc?> required name="v_desc" class="form-control" placeholder="Vehicle Type">
+                                    <input value="<?php echo  $v_desc?>" required name="v_desc" class="form-control" placeholder="Vehicle Type">
                                 </div>
                             </div>
                         </div>
@@ -105,11 +105,11 @@ if(isset($_POST['submit'])){
                             <div class = "form-row">
                                 <div class = "col-md-2">
                                     <label class="alt">Gas Rate</label>
-                                    <input value=<?php echo  $gas_rate?> required name="gas_rate" class="form-control" placeholder="Gas Rate">
+                                    <input value="<?php echo  $gas_rate?>" required name="gas_rate" class="form-control" placeholder="Gas Rate">
                                 </div>
                                 <div class = "col-md-2">
                                     <label class="alt">Flag-Down Rate</label>
-                                    <input value=<?php echo  $flag_rate?> required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
+                                    <input value="<?php echo  $flag_rate?>" required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
                                 </div>
                             </div>
                         </div>
@@ -117,11 +117,11 @@ if(isset($_POST['submit'])){
                             <div class = "form-row">
                                 <div class = "col-md-2">
                                     <label class="alt">Succeeding Rate</label>
-                                    <input value=<?php echo  $succ_rate?> required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
+                                    <input value="<?php echo  $succ_rate?>" required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
                                 </div>
                                 <div class = "col-md-2">
                                     <label class="alt">Waiting Rate</label>
-                                    <input value=<?php echo  $wait_rate?> required name="wait_rate" class="form-control" placeholder="Waiting Rate">
+                                    <input value="<?php echo  $wait_rate?>" required name="wait_rate" class="form-control" placeholder="Waiting Rate">
                                 </div>
                             </div>
                         </div>

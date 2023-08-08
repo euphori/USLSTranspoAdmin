@@ -95,31 +95,31 @@ if(isset($_POST['submit'])){
                         <div class = "form-group">
                             <div class = "form-row">
                                 <div class = "col-md-2">
-                                    <label class="alt">Vehicle Code</label>
-                                    <input value=<?php echo  $v_code?>  required name="v_code" class="form-control" placeholder="Vehicle Code">
+                                    <label>Vehicle Code</label>
+                                    <input value="<?php echo  $v_code?>"  required name="v_code" class="form-control" placeholder="Vehicle Code">
                                 </div>
                                 <div class = "col-md-2">
-                                    <label class="alt">Name/Brand</label>
-                                    <input value=<?php echo  $v_name?> required name="v_name" class="form-control" placeholder="Name/Brand">
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "form-group">
-                            <div class = "form-row">
-                                <div class = "col-md-2">
-                                    <label class="alt">Model/Series</label>
-                                    <input value=<?php echo  $v_model?> required name="v_model" class="form-control" placeholder="Model/Series">
-                                </div>
-                                <div class = "col-md-2">
-                                    <label class="alt">Plate Number</label> 
-                                    <input value=<?php echo  $v_platenum?> required name="v_platenum" class="form-control" placeholder="Plate Number">
+                                    <label>Name/Brand</label>
+                                    <input value="<?php echo  $v_name?>" required name="v_name" class="form-control" placeholder="Name/Brand">
                                 </div>
                             </div>
                         </div>
                         <div class = "form-group">
                             <div class = "form-row">
                                 <div class = "col-md-2">
-                                <label class="alt">Vehicle Type</label> 
+                                    <label>Model/Series</label>
+                                    <input value="<?php echo  $v_model?>" required name="v_model" class="form-control" placeholder="Model/Series">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label>Plate Number</label> 
+                                    <input value="<?php echo  $v_platenum?>" required name="v_platenum" class="form-control" placeholder="Plate Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                <label>Vehicle Type</label> 
                                     <select class="form-control" name="v_type">
                                         <option value="aircon_bus">Aircon Bus</option>
                                         <option value="nonair_bus">Non Aircon Bus</option>
@@ -128,7 +128,7 @@ if(isset($_POST['submit'])){
                                     </select>
                                 </div>
                                 <div class = "col-md-2">
-                                <label class="alt">Usage Rights</label> 
+                                <label>Usage Rights</label> 
                                     <select class="form-control" name="usage_rights">
                                         <option value=1>ALL</option>
                                         <option value=2>VC's & ADMIN</option>
@@ -138,7 +138,7 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                         <div class = "form-group col-md-3">
-                            <label class="alt">Seating Capacity</label> 
+                            <label>Seating Capacity</label> 
                             <input value=<?php echo  $v_seat_cap?> required name="v_seat_cap" class="form-control" placeholder="Seating Capacity">
                         </div>
                         <button  type="submit" name="submit" class="btn btn-success">Update Record</button>

@@ -89,20 +89,20 @@ if(isset($_POST['submit'])){
                             <div class = "form-row">
                                 <div class = "col-md-2">
                                     <label>Driver's First Name</label>
-                                    <input value=<?php echo  $d_fname?> required name="d_fname" class="form-control" placeholder="First Name">
+                                    <input value="<?php echo  $d_fname?>" required name="d_fname" class="form-control" placeholder="First Name">
                                 </div>
                                 <div class = "col-md-2">
                                     <label>Driver's Last Name</label>
-                                    <input value=<?php echo  $d_lname?>required name="d_lname" class="form-control" placeholder="Last Name">
+                                    <input value="<?php echo  $d_lname?>" required name="d_lname" class="form-control" placeholder="Last Name">
                                 </div>
                             </div>
                             <div class = "form-group col-md-2">
                                 <label>Driver's Contact Number</label>
-                                <input value=<?php echo  $d_contact?>required name="d_contact" class="form-control" placeholder="Contact">
+                                <input value="<?php echo  $d_contact?>" required name="d_contact" class="form-control" placeholder="Contact">
                             </div>
                             <div class = "form-group col-md-2">
                                 <label>Driver's Status</label> 
-                                <select value=<?php echo  $d_status?> class="form-control" name="d_status">
+                                <select value="<?php echo  $d_status?>" class="form-control" name="d_status">
                                     <option value="regular">Regular</option>
                                     <option value="romac">ROMAC</option>
                                 </select>
