@@ -4,6 +4,7 @@ if(!empty($_SESSION["user_id"])){
     $id = $_SESSION["user_id"];
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
+    $user_name = $row['user_name'];
 }else{
     header("Location: userLogin.php");
 }

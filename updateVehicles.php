@@ -4,6 +4,7 @@ if(!empty($_SESSION["user_id"])){
     $id = $_SESSION["user_id"];
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
+    $user_name = $row['user_name'];
 }else{
     header("Location: userLogin.php");
 }
@@ -62,7 +63,7 @@ if(isset($_POST['submit'])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <?php echo  $row["user_name"]?></div>
+                        <div class ="text-white">Logged In as: <?php echo  $user_name?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>

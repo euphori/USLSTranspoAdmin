@@ -4,6 +4,7 @@ if(!empty($_SESSION["user_id"])){
     $id = $_SESSION["user_id"];
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
+    $user_name = $row['user_name'];
 }else{
     header("Location: userLogin.php");
 }
@@ -55,7 +56,7 @@ if(isset($_POST['submit'])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: <?php echo  $user_name?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -76,41 +77,51 @@ if(isset($_POST['submit'])){
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
+                <li><a href="#">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
             </nav>
             </div>
-            <div class="card col-md-2">
-                <div class="cardHeader"><h3>Update Driver Account</h3></div>
-                <div class="cardBody">
-                    <form method="POST">
-                        <div class = "form-group">
-                            <div class = "form-row">
-                                <div class = "col-md-2">
-                                    <label>Driver's First Name</label>
-                                    <input value="<?php echo  $d_fname?>" required name="d_fname" class="form-control" placeholder="First Name">
-                                </div>
-                                <div class = "col-md-2">
-                                    <label>Driver's Last Name</label>
-                                    <input value="<?php echo  $d_lname?>" required name="d_lname" class="form-control" placeholder="Last Name">
-                                </div>
-                            </div>
-                            <div class = "form-group col-md-2">
-                                <label>Driver's Contact Number</label>
-                                <input value="<?php echo  $d_contact?>" required name="d_contact" class="form-control" placeholder="Contact">
-                            </div>
-                            <div class = "form-group col-md-2">
-                                <label>Driver's Status</label> 
-                                <select value="<?php echo  $d_status?>" class="form-control" name="d_status">
-                                    <option value="regular">Regular</option>
-                                    <option value="romac">ROMAC</option>
-                                </select>
-                            </div>
+            <div class="card">
+            <div class ="modalContainer">
+            <div><h3 class="alt">Add a New Account</h3></div>
+            <form method="POST">
+                <div class = "form-group">
+
+                    <div class = "form-row">
+                    <div class = "col-md-2">
+                            <label class="alt">Driver's First Name</label>
+                            <input value=<?php echo  $d_fname?> required name="d_fname" class="form-control" placeholder="First Name">
                         </div>
-                    <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
-                    <a type= "button" class="btn btn-danger" href = "adminDrivers.php"> Cancel</a>
-                    </form>
+                        <div class = "col-md-2">
+                            <label class="alt">Driver's Last Name</label>
+                            <input value=<?php echo  $d_lname?>required name="d_lname" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                    
+                    <div class = "form-group col-md-2">
+                        <label class="alt">Driver's Contact Number</label>
+                        <input value=<?php echo  $d_contact?>required name="d_contact" class="form-control" placeholder="Contact">
+                    </div>
+                    <div class = "form-group col-md-2">
+                            <label class="alt">Driver's Status</label> 
+                            <select class="form-control" name="d_status">
+                                <option value="regular">Regular</option>
+                                <option value="romac">ROMAC</option>
+                            </select>
+                    </div>
+                   
+                  
+                </div>
+                <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
+                <a type= "button" class="btn btn-danger" href = "adminDrivers.php"> Cancel</a>
+ 
+                </div>
+
+              
+            </form>
+            </div>
+              
             </div>
         </main>
         <footer>       
