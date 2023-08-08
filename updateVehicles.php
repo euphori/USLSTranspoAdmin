@@ -83,69 +83,68 @@ if(isset($_POST['submit'])){
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="#">Accounts</a></li>
+                <li><a href="adminAccounts.php">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
             </nav>
             </div>
-            <div class="card">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Add a New Vehicle</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Vehicle Code</label>
-                                <input value=<?php echo  $v_code?>  required name="v_code" class="form-control" placeholder="Vehicle Code">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Name/Brand</label>
-                                <input value=<?php echo  $v_name?> required name="v_name" class="form-control" placeholder="Name/Brand">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Model/Series</label>
-                                <input value=<?php echo  $v_model?> required name="v_model" class="form-control" placeholder="Model/Series">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Plate Number</label> 
-                                <input value=<?php echo  $v_platenum?> required name="v_platenum" class="form-control" placeholder="Plate Number">
+            <div class="card col-md-2">
+                <div class="cardHeader"><h3>Add a New Vehicle</h3></div>
+                <div class="cardBody">
+                    <form method="POST">
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label class="alt">Vehicle Code</label>
+                                    <input value=<?php echo  $v_code?>  required name="v_code" class="form-control" placeholder="Vehicle Code">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label class="alt">Name/Brand</label>
+                                    <input value=<?php echo  $v_name?> required name="v_name" class="form-control" placeholder="Name/Brand">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                            <label class="alt">Vehicle Type</label> 
-                            <select class="form-control" name="v_type">
-                                <option value="aircon_bus">Aircon Bus</option>
-                                <option value="nonair_bus">Non Aircon Bus</option>
-                                <option value="nonair_van">Van</option>
-                                <option value="aircon_van">Aircon Van</option>
-                            </select>
-                            </div>
-                            <div class = "col-md-2">
-                            <label class="alt">Usage Rights</label> 
-                            <select class="form-control" name="usage_rights">
-                                <option value=1>ALL</option>
-                                <option value=2>VC's & ADMIN</option>
-                                <option value=3>ADMIN ONLY</option>
-                            </select>
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label class="alt">Model/Series</label>
+                                    <input value=<?php echo  $v_model?> required name="v_model" class="form-control" placeholder="Model/Series">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label class="alt">Plate Number</label> 
+                                    <input value=<?php echo  $v_platenum?> required name="v_platenum" class="form-control" placeholder="Plate Number">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class = "form-group col-md-3">
-                        <label class="alt">Seating Capacity</label> 
-                        <input value=<?php echo  $v_seat_cap?> required name="v_seat_cap" class="form-control" placeholder="Seating Capacity">
-                    </div>
-                    <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
-                    <a type= "button" class="btn btn-danger" href = "adminVehicles.php"> Cancel</a>
-                </form>
-            </div>
-              
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                <label class="alt">Vehicle Type</label> 
+                                    <select class="form-control" name="v_type">
+                                        <option value="aircon_bus">Aircon Bus</option>
+                                        <option value="nonair_bus">Non Aircon Bus</option>
+                                        <option value="nonair_van">Van</option>
+                                        <option value="aircon_van">Aircon Van</option>
+                                    </select>
+                                </div>
+                                <div class = "col-md-2">
+                                <label class="alt">Usage Rights</label> 
+                                    <select class="form-control" name="usage_rights">
+                                        <option value=1>ALL</option>
+                                        <option value=2>VC's & ADMIN</option>
+                                        <option value=3>ADMIN ONLY</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "form-group col-md-3">
+                            <label class="alt">Seating Capacity</label> 
+                            <input value=<?php echo  $v_seat_cap?> required name="v_seat_cap" class="form-control" placeholder="Seating Capacity">
+                        </div>
+                        <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
+                        <a type= "button" class="btn btn-danger" href = "adminVehicles.php"> Cancel</a>
+                    </form>
+                </div>
             </div>
         </main>
         <footer>       

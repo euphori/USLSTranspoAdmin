@@ -72,34 +72,31 @@ if(isset($_POST['submit'])){
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="#">Accounts</a></li>
+                <li><a href="adminAccounts.php">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
             </nav>
             </div>
-            <div class="card">
-            <div class ="modalContainer">
-            <div><h3 class="alt">Add a New Account</h3></div>
-            <form method="POST">
-                <div class = "form-group">
-                    <div class = "form-row">
-                        <div class = "col-md-2">
-                            <label class="alt">Account Number</label>
-                            <input required value = <?php echo  $accnt_no?> name="accnt_no" class="form-control" placeholder="Account Number">
+            <div class="card col-md-2">
+                <div class="cardHeader"><h3>Update Account</h3></div>
+                <div class="cardBody">
+                    <form method="POST">
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label>Account Number</label>
+                                    <input required value = <?php echo  $accnt_no?> name="accnt_no" class="form-control" placeholder="Account Number">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label>Office</label>
+                                    <input required  value = <?php echo  $accnt_name?> name="accnt_name" class="form-control" placeholder="Office">
+                                </div>
+                            </div>
                         </div>
-                        <div class = "col-md-2">
-                            <label class="alt">Office</label>
-                            <input required  value = <?php echo  $accnt_name?> name="accnt_name" class="form-control" placeholder="Office">
-                        </div>
-                    </div>
+                        <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
+                        <a type= "button" class="btn btn-danger" href = "adminAccounts.php"> Cancel</a>
+                    </form> 
                 </div>
-                
-                
-                <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
-                <a type= "button" class="btn btn-danger" href = "adminAccounts.php"> Cancel</a>
-            </form>
-            </div>
-              
             </div>
         </main>
         <footer>       

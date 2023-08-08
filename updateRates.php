@@ -80,57 +80,55 @@ if(isset($_POST['submit'])){
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="#">Accounts</a></li>
+                <li><a href="adminAccounts.php">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
             </nav>
             </div>
-            <div class="card">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Update Rate</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Vehicle Code</label>
-                                <input value=<?php echo  $v_type?> required name="v_type" class="form-control" placeholder="Vehicle Code">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Name/Brand</label>
-                                <input value=<?php echo  $v_desc?> required name="v_desc" class="form-control" placeholder="Vehicle Type">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Gas Rate</label>
-                                <input value=<?php echo  $gas_rate?> required name="gas_rate" class="form-control" placeholder="Gas Rate">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Flag-Down Rate</label>
-                                <input value=<?php echo  $flag_rate?> required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
+            <div class="card col-md-2">
+                <div class="cardHeader"><h3>Update Rate</h3></div>
+                <div class="cardBody">
+                    <form method="POST">
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label class="alt">Vehicle Code</label>
+                                    <input value=<?php echo  $v_type?> required name="v_type" class="form-control" placeholder="Vehicle Code">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label class="alt">Name/Brand</label>
+                                    <input value=<?php echo  $v_desc?> required name="v_desc" class="form-control" placeholder="Vehicle Type">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Succeeding Rate</label>
-                                <input value=<?php echo  $succ_rate?> required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Waiting Rate</label>
-                                <input value=<?php echo  $wait_rate?> required name="wait_rate" class="form-control" placeholder="Waiting Rate">
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label class="alt">Gas Rate</label>
+                                    <input value=<?php echo  $gas_rate?> required name="gas_rate" class="form-control" placeholder="Gas Rate">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label class="alt">Flag-Down Rate</label>
+                                    <input value=<?php echo  $flag_rate?> required name="flag_rate" class="form-control" placeholder="Flag-Down Rate">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
-                    <a type= "button" class="btn btn-danger" href = "adminRates.php"> Cancel</a>
-                </form>
-            </div>
-              
+                        <div class = "form-group">
+                            <div class = "form-row">
+                                <div class = "col-md-2">
+                                    <label class="alt">Succeeding Rate</label>
+                                    <input value=<?php echo  $succ_rate?> required name="succ_rate" class="form-control" placeholder="Succeeding Rate">
+                                </div>
+                                <div class = "col-md-2">
+                                    <label class="alt">Waiting Rate</label>
+                                    <input value=<?php echo  $wait_rate?> required name="wait_rate" class="form-control" placeholder="Waiting Rate">
+                                </div>
+                            </div>
+                        </div>
+                        <button  type="submit" name="submit" class="btn btn-success">Update Record</button>
+                        <a type= "button" class="btn btn-danger" href = "adminRates.php"> Cancel</a>
+                    </form>
+                </div> 
             </div>
         </main>
         <footer>       
