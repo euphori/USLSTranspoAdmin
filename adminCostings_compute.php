@@ -289,9 +289,9 @@ if(isset($_POST['submit_odo'])){
                         </tr>
                         <tr align ="center">
                             <td><input required name="vehicle" class="form-control col-md-2" value=<?php echo  $vehicle?> ></td>
-                            <td><input required name="actual_dt" class="form-control col-md-2" value=<?php echo  $actual_dt?> ></td>
+                            <td><input type="time" required name="actual_dt" class="form-control col-md-2" value=<?php echo  $actual_dt?> ></td>
                             <td><input required name="odo_out" class="form-control col-md-2" value=<?php echo  $odo_out?> ></td>
-                            <td><input required name="actual_at" class="form-control col-md-2" value=<?php echo  $actual_at?> ></td>
+                            <td><input type="time" required name="actual_at" class="form-control col-md-2" value=<?php echo  $actual_at?> ></td>
                             <td><input required name="odo_in" class="form-control col-md-2" value=<?php echo  $odo_in?> ></td>
                             <td><input required name="waiting" class="form-control col-md-2" value=<?php echo  $waiting?> ></td>
                             <td><input required name="guard_on_duty" class="form-control col-md-2" value=<?php echo  $guard_on_duty?> ></td>
@@ -317,7 +317,7 @@ if(isset($_POST['submit_odo'])){
                         </tr>
                     </table>
                     <table>
-                        <td><b>Total Charges<b></td>
+                        <th align="left"><b>Total Charges<b></th>
                         <th><?php echo  $charge_amnt?> php</th>
                     </table>
                     </div>

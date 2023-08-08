@@ -23,6 +23,7 @@ if(!empty($_SESSION["user_id"])){
         <link href="css/datatables.css" rel="stylesheet">
     </head>
     <body>
+
         <header>
             <nav>
                 <ul>
@@ -36,200 +37,195 @@ if(!empty($_SESSION["user_id"])){
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
+
         <main class="vertical">
+
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="#">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="#">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="adminReports.php">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="card">
                 <div class="cardHeader">
-                <span class="float-left"><h1>Reservations</h1></span>
+                    <span class="float-left"><h1>Reservations</h1></span>
                 </div>
                 <div class="cardBody">
-                <div class="table-fixed" >
+                    <div class="table-fixed" >
 
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Requisition Number</div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["req_no"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' .$data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
+                        <div class="column-2">
 
-                        ?>
-        
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Date of Trip</div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["date_of_trip"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Requisition Number</div>
+                            </div>
 
-                        ?>
-        
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Flag-Down Rate</div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["flag_rate"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
-
-                        ?>
-        
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Date Reserved</div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["date_reserve"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
-
-                        ?>
-        
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Reservation(s) of</div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["requestor"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $data. '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
-
-                        ?>
-        
-               
-                        
-                    </div>
-
-                    
-                    
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Action</div>
-                           
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM reservation";
-                        
+                            <?php
+                            $sql = "SELECT * FROM reservation";
                             $result = $conn->query($sql);
                             // Loop through the retrieved data and populate the table rows
                             if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-        
-                                $data = $row["req_no"];
-                                echo '<div class="item-cell">     
-                                    <a class="btn btn-success" href="adminReservations_review.php?ticket_id='.$data.'">
-                                    View Request
-                                    </a>
-                                    </div>
-                                    ';
-                              
-                                $counter++;
-                            }
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["req_no"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' .$data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
                             } else {
-                            echo "No data found in the database.";
+                                echo "No data found in the database.";
                             }
-                            
+                            ?>
 
-                        ?>
-                        
-        
-               
-                        
-                    </div>
-                
-                </div>    
+                        </div>
+
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Date of Trip</div>
+                            </div>
+
+                            <?php
+                            $sql = "SELECT * FROM reservation";
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["date_of_trip"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+                            ?>
+
+                        </div>
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Flag-Down Rate</div>
+                            </div>
+
+                            <?php
+                            $sql = "SELECT * FROM reservation";
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["flag_rate"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+                            ?>
+
+                        </div>
+
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Date Reserved</div>
+                            </div>
+
+                            <?php
+                            $sql = "SELECT * FROM reservation";
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["date_reserve"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+                        </div>
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Reservation(s) of</div>
+                            </div>
+
+                            <?php
+                            $sql = "SELECT * FROM reservation";
+                            $result = $conn->query($sql);
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["requestor"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+                            ?>
+
+                        </div>
+
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Action</div>
+                            </div>
+
+                            <?php
+                            $sql = "SELECT * FROM reservation";
+                            
+                                $result = $conn->query($sql);
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+            
+                                    $data = $row["req_no"];
+                                    echo '<div class="item-cell">     
+                                        <a class="btn btn-success" href="adminReservations_review.php?ticket_id='.$data.'">
+                                        View Request
+                                        </a>
+                                        </div>
+                                        ';
+                                
+                                    $counter++;
+                                }
+                                } else {
+                                echo "No data found in the database.";
+                                }
+                            ?>
+
+                        </div>
+
+                    </div>    
                 </div>
             </div>
         </main>
@@ -242,6 +238,7 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
         <!--LOGOUT MODAL-->

@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
                 <li><a href="adminReservations.php">Reservations</a></li>
                 <li><a href="adminTickets.php">Trip Tickets</a></li>
                 <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="#">Vehicles</a></li>
+                <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
                 <li><a href="adminAccounts.php">Accounts</a></li>

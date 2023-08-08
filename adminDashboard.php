@@ -36,27 +36,36 @@ if(!empty($_SESSION["user_id"])){
             </div>  
         </header>
         <main class="vertical">
+
+            <!--SIDEBAR-->
+
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="#">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="adminReports.php">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
+            <!--MAIN WEBPAGE HEADER-->
+
             <div class="card">
                 <div class="cardHeader">
                 <span class="float-left"><h1>Dashboard</h1></span>
                 <span class="float-right">Welcome, <?php echo  $row["user_name"]?>!</span>
                 </div>
+
+                <!--PAGE LINKS-->
+
                 <div class="cardBody">
                     <div class="form-row center-items mb-3">
                             <div class="card col-md-4 h100">
@@ -75,12 +84,18 @@ if(!empty($_SESSION["user_id"])){
                             </div>
                     </div>
             </div>
+
+            <!--REQUISITIONS-->
+
             <div class="cardHeader">
                 <span class="float-left"><h3>Online Requests</h3></span>
             </div>
             <div class="cardBody">
 
             </div>
+
+            <!--RESERVATIONS-->
+
             <div class="cardHeader">
                 <span class="float-left"><h3>Reservations</h3></span>
             </div>
@@ -109,8 +124,6 @@ if(!empty($_SESSION["user_id"])){
                 }
 
                 ?>
-
-
                 
             </div>
             <div class="column-2">
@@ -136,8 +149,6 @@ if(!empty($_SESSION["user_id"])){
 
                 ?>
 
-
-                
             </div>
             <div class="column-2">
                 <div class="header-cell-sticky" >
@@ -162,8 +173,6 @@ if(!empty($_SESSION["user_id"])){
 
                 ?>
 
-
-                
             </div>
             <div class="column-2">
                 <div class="header-cell-sticky" >
@@ -187,9 +196,7 @@ if(!empty($_SESSION["user_id"])){
                 }
 
                 ?>
-
-
-                
+  
             </div>
             <div class="column-2">
                 <div class="header-cell-sticky" >
@@ -213,12 +220,7 @@ if(!empty($_SESSION["user_id"])){
                 }
 
                 ?>
-
-
-                
             </div>
-
-
 
             <div class="column-2">
                 <div class="header-cell-sticky" >
@@ -242,24 +244,17 @@ if(!empty($_SESSION["user_id"])){
                             <a class="btn btn-danger" href = "delete.php?r_delete_id='.$data.'">
                             Remove
                             </a>
-                        
-                            
                             </div>
                             ';
-                    
                         $counter++;
                     }
                     } else {
                     echo "No data found in the database.";
                     }
-                    
-
                 ?>
-                
-
-
-                
             </div>
+
+            <!--TRIP TICKETS-->
 
             </div>        
             </div>
@@ -268,10 +263,11 @@ if(!empty($_SESSION["user_id"])){
             </div>
             <div class="cardBody">
                     
-            </div>
-                
-                
+            </div> 
         </main>
+
+        <!--FOOTER-->
+
         <footer>       
             <div class ="footer-container">
                 <div class = "footer-container-2">
@@ -281,6 +277,7 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
         <!--LOGOUT MODAL-->
