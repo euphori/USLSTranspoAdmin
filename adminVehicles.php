@@ -137,10 +137,10 @@ if(isset($_POST["submit"])){
                     </div>
                 </div>
                 <!--Hidden-->
-                <div class="table" >
+                <div class="table-fixed" >
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Vehicle Code</div>
                         </div>
                         <?php
@@ -166,7 +166,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Name / Brand</div>
                         </div>
                         <?php
@@ -192,7 +192,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Model/Series</div>
                         </div>
                         <?php
@@ -218,7 +218,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Plate Number</div>
                         </div>
                         <?php
@@ -244,7 +244,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Seating Capacity</div>
                         </div>
                         <?php
@@ -270,7 +270,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Type</div>
                         </div>
                         <?php
@@ -296,7 +296,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Status</div>
                         </div>
                         <?php
@@ -329,7 +329,7 @@ if(isset($_POST["submit"])){
                     
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Action</div>
                            
                         </div>

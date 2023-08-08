@@ -93,9 +93,9 @@ if(isset($_POST["submit"])){
                         </form>
                     </div>
                 </div>
-                <div class="table" >
+                <div class="table-fixed" >
                     <div class="column">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">ID</div>
                         </div>
                         <?php
@@ -123,7 +123,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Account Number</div>
                         </div>
                         <?php
@@ -149,7 +149,7 @@ if(isset($_POST["submit"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Office</div>
                         </div>
                         <?php
@@ -176,7 +176,7 @@ if(isset($_POST["submit"])){
                     </div>
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Action</div>
                            
                         </div>
