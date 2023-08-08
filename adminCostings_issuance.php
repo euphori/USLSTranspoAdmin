@@ -237,7 +237,7 @@ if(isset($_POST['submit'])){
                             <th>Arrival Time</th>
                             <th>Vehicle</th>
                             <th>Driver</th>
-                            <th>Status<th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
@@ -245,7 +245,7 @@ if(isset($_POST['submit'])){
                             <td>5:00pm</td>
                             <td>INN</td>
                             <td>Bob Bingi</td>
-                            <td>ISSUED<td>
+                            <td>ISSUED</td>
                             <td><a type= "button" class = "btn btn-danger">Reprint Ticket</a></td>
                         </tr>
                     </table>
