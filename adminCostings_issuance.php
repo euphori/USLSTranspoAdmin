@@ -5,10 +5,46 @@ if(!empty($_SESSION["user_id"])){
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
 }else{
-    header("Location: userLogin.php");
+    header("Location: adminLogin.php");
 }
 ?>
 
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM requisition WHERE req_id = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+$req_id = $id;
+$requestor = $row['requestor'];
+$contact = $row['contact'];
+$email = $row['email'];
+$date_of_trip = $row['date_of_trip'];
+$destination = $row['destination'];
+$purpose = $row['purpose'];
+$boarding = $row['boarding'];
+$pass_no = $row['pass_no'];
+$date_reserve = $row['date_reserve'];
+if(isset($_POST['submit'])){
+    $requestor = $_POST['requestor'];
+    $contact = $_POST['contact'];
+    $email = $_POST['email'];
+    $date_of_trip = $_POST['date_of_trip'];
+    $destination = $_POST['destination'];
+    $purpose = $_POST['purpose'];
+    $boarding = $_POST['boarding'];
+    $pass_no =$_POST['pass_no'];
+    $id = $_GET['ticket_id'];
+    $sql = "UPDATE requisition set requestor = '$requestor', contact = '$contact',email = '$email' ,date_of_trip = '$date_of_trip', 
+    destination = '$destination', purpose = '$purpose' , boarding = '$boarding', pass_no = $pass_no WHERE req_id = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminCostings_compute.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +63,7 @@ if(!empty($_SESSION["user_id"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: </div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -55,21 +91,21 @@ if(!empty($_SESSION["user_id"])){
         <main class="vertical">
             <div class="card">
                 <div class="cardHeader">
-                <span class="float-left"><h1>Review Reservation</h1></span>
+                <span class="float-left"><h1>Trip Ticket Issuance</h1></span>
                 </div>
                 <div class="cardBody">
                     <div class = "form-row center-items mb-3">
                         <div class="card col-md-4">
                             <div class="cardHeader"><h4>Requisition Number</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $req_id?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date of Trip(s)</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_of_trip?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date Reserved</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_reserve?></div>
                     </div>
                 </div>
                 <div class = "form-row center-items mb-3">
@@ -77,31 +113,27 @@ if(!empty($_SESSION["user_id"])){
                         <table>
                             <tr>
                                 <td><b>Requestor:</b></td>
-                                <td></td>
+                                <td><?php echo  $requestor?></td>
                             </tr>
                             <tr>
                                 <td><b>Contact No:</b></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>Email:</b></td>
-                                <td></td>
+                                <td><?php echo  $contact?></td>
                             </tr>
                             <tr>
                                 <td><b>Destination:</b></td>
-                                <td></td>
+                                <td><?php echo  $destination?></td>
                             </tr>
                             <tr>
                                 <td><b>Purpose of Trip:</b></td>
-                                <td></td>
+                                <td><?php echo  $purpose?></td>
                             </tr>
                             <tr>
                                 <td><b>Boarding Area:</b></td>
-                                <td></td>
+                                <td><?php echo  $boarding?></td>
                             </tr>
                             <tr>
                                 <td><b>No. of Passenger:</b></td>
-                                <td></td>
+                                <td><?php echo  $pass_no?></td>
                             </tr>
                         </table>
                         <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
@@ -205,14 +237,16 @@ if(!empty($_SESSION["user_id"])){
                             <th>Arrival Time</th>
                             <th>Vehicle</th>
                             <th>Driver</th>
+                            <th>Status<th>
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
+                            <td>8:00am</td>
+                            <td>5:00pm</td>
+                            <td>INN</td>
+                            <td>Bob Bingi</td>
+                            <td>ISSUED<td>
+                            <td><a type= "button" class = "btn btn-danger">Reprint Ticket</a></td>
                         </tr>
                     </table>
                     </div>
@@ -220,7 +254,6 @@ if(!empty($_SESSION["user_id"])){
                 </div>
                 <div class = "form-row float-right">
                     <button class = "btn btn-danger">Cancel Request</button>
-                    <button class = "btn btn-success">Assign Driver(s)</button>
                 </div>
             </div>
         </main>

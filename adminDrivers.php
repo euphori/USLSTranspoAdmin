@@ -137,9 +137,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Last Name</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM drivers";
@@ -166,9 +163,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">First Name</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM drivers";
@@ -196,9 +190,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Contact No.</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM drivers";
@@ -227,9 +218,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Employment Status</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM drivers";
@@ -257,9 +245,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Duty Status</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM drivers";

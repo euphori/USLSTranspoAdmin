@@ -199,7 +199,7 @@ if(!empty($_SESSION["user_id"])){
                                 <a class="btn btn-success" href = "adminCostings_compute.php?ticket_id='.$data.'">
                                 View Request
                                 </a>
-                                <a class="btn btn-success" href = "delete.php?r_delete_id='.$data.'">
+                                <a class="btn btn-success" href = "adminCostings_issuance.php?ticket_id='.$data.'">
                                 Trip Ticket
                                 </a>
                             
