@@ -269,8 +269,8 @@ if(isset($_POST['submit_odo'])){
                                     <td><b>Payment Mode:</b></td>
                                     <td>
                                         <select name = "charge" class="form-control">
-                                            <option value="1">Depository</option>
-                                            <option value="3">Cash</option>
+                                            <option value="Depository">Depository</option>
+                                            <option value="Cash">Cash</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -304,27 +304,27 @@ if(isset($_POST['submit_odo'])){
                                 <table>
                                     <tr>
                                         <td><b>Requestor:</b></td>
-                                        <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
+                                        <td><input required name="requestor"  value="<?php echo  $requestor?>" ></td>
                                     </tr>
                                     <tr>
                                         <td><b>Contact No:</b></td>
-                                        <td><input required name="contact"  value=<?php echo  $contact?> ></td>
+                                        <td><input required name="contact"  value="<?php echo  $contact?>" ></td>
                                     </tr>
                                     <tr>
                                         <td><b>Destination:</b></td>
-                                        <td><input required name="destination"  value=<?php echo  $destination?> ></td>
+                                        <td><input required name="destination"  value="<?php echo  $destination?> "></td>
                                     </tr>
                                     <tr>
                                         <td><b>Purpose of Trip:</b></td>
-                                        <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
+                                        <td><input required name="purpose"  value="<?php echo  $purpose?>"></td>
                                     </tr>
                                     <tr>
                                         <td><b>Boarding Area:</b></td>
-                                        <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
+                                        <td><input required name="boarding"  value="<?php echo  $boarding?>"></td>
                                     </tr>
                                     <tr>
                                         <td><b>No. of Passenger:</b></td>
-                                        <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
+                                        <td><input required name="pass_no"  value="<?php echo  $pass_no?>"></td>
                                     </tr>
                                 </table>
                                 <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
@@ -340,7 +340,8 @@ if(isset($_POST['submit_odo'])){
                             <th>Arrival Time</th>
                             <th>Vehicle</th>
                             <th>Driver</th>
-                            <th>Status</th>
+                            <th>Status</th> <!--MISSING DATA COLUMN FOR ISSUANCE STATUS (ISSUED/PENDING)-->
+                            <th>Date Issued</th>
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
@@ -348,7 +349,8 @@ if(isset($_POST['submit_odo'])){
                             <td><?php echo  $time_to?></td>
                             <td><?php echo  $vehicle?></td>
                             <td><?php echo  $driver?></td>
-                            <td><?php echo  $date_issued?><td>
+                            <td></td>
+                            <td><?php echo  $date_issued?></td>
                             <td><a type= "button" class = "btn btn-danger">Reprint Ticket</a></td>
                         </tr>
                     </table>

@@ -325,7 +325,6 @@ if(isset($_POST['submit_odo'])){
                                 <tr>
                                     <th>Payment Mode</th>
                                     <th>Account Number</th>
-                        
                                     <th>Amount</th>
                                     <th></th>
                                     <th></th>
