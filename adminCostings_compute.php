@@ -308,7 +308,6 @@ if(isset($_POST['submit_odo'])){
                         <tr>
                             <th>Vehicle(s)</th>
                             <th>Distance</th>
-                            <th>Charges</th>
                         </tr>
                         <tr align ="center">
                             <td><?php echo  $vehicle?></td>
