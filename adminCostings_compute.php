@@ -47,6 +47,56 @@ if(isset($_POST['submit'])){
 }
 ?>
 
+
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM reservation WHERE req_no = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$vehicle = $row['vehicle'];
+$time_from = $row['time_from'];
+$time_to = $row['time_to'];
+$driver = $row['driver'];
+$waiting = $row['waiting'];
+$actual_dt = $row['actual_dt'];
+$odo_out = $row['odo_out'];
+$actual_at = $row['actual_at'];
+$odo_in = $row['odo_in'];
+$guard_on_duty = $row['guard_on_duty'];
+$distance = $row['distance'];
+$gas_rate = $row['gas_rate'];
+$flag_rate = $row['flag_rate'];
+$succ_rate = $row['succ_rate'];
+$wait_rate = $row['wait_rate'];
+$charge_amnt = $row['charge_amnt'];
+if(isset($_POST['submit_odo'])){
+    
+    $waiting = $_POST['waiting'];   
+    $actual_dt = $_POST['actual_dt'];
+    $odo_out = $_POST['odo_out'];
+    $actual_at =$_POST['actual_at'];
+    $odo_in = $_POST['odo_in'];
+    $guard_on_duty = $_POST['guard_on_duty'];
+    $id = $_GET['ticket_id'];
+    
+
+    $distance = $odo_in - $odo_out ;
+    $charge_amnt = (($distance - 8) * $succ_rate) + $flag_rate;
+    $sql = "UPDATE reservation set waiting = $waiting, actual_dt = '$actual_dt',odo_out = $odo_out ,
+    actual_at = '$actual_at', guard_on_duty = '$guard_on_duty' ,distance = $distance, charge_amnt = $charge_amnt,
+    odo_in = $odo_in WHERE req_no = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminCostings_compute.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -141,59 +191,41 @@ if(isset($_POST['submit'])){
                         <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
                     </div>
                     <!--Hidden Form-->
-                <div id="requestInfo" class="card hidden col-md-3 mb-3">
-                    <div class="cardHeader"><b>Edit Request Details</b></div>
-                <form method="POST">
-                    <table>
-                            <tr>
-                                <td><b>Requestor:</b></td>
-                                <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
-                            </tr>
-                            <tr>
-                                <td><b>Contact No:</b></td>
-                                <td><input required name="contact"  value=<?php echo  $contact?> ></td>
-                            </tr>
-                            <tr>
-                                <td><b>Destination:</b></td>
-                                <td><input required name="destination"  value=<?php echo  $destination?> ></td>
-                            </tr>
-                            <tr>
-                                <td><b>Purpose of Trip:</b></td>
-                                <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
-                            </tr>
-                            <tr>
-                                <td><b>Boarding Area:</b></td>
-                                <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
-                            </tr>
-                            <tr>
-                                <td><b>No. of Passenger:</b></td>
-                                <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
-                            </tr>
-                    </table>
-                    <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
-                </form>
-                </div>
-                <!--Hidden Form-->
-                </div>
-                <div class = "cardBody">
-                        <div class = "card mb-3">
+                    <div id="requestInfo" class="card hidden col-md-3 mb-3">
+                        <div class="cardHeader"><b>Edit Request Details</b></div>
+                        <form method="POST">
                             <table>
-                                <tr>
-                                    <th>Departure</th>
-                                    <th>Arrival</th>
-                                    <th>Vehicle(s)</th>
-                                    <th>Driver</th>
-                                </tr>
-                                <tr align = "center">
-                                    <td>A</td>
-                                    <td>B</td>
-                                    <td>C</td>
-                                    <td>D</td>
-                                </tr>
-                                
+                                    <tr>
+                                        <td><b>Requestor:</b></td>
+                                        <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Contact No:</b></td>
+                                        <td><input required name="contact"  value=<?php echo  $contact?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Destination:</b></td>
+                                        <td><input required name="destination"  value=<?php echo  $destination?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Purpose of Trip:</b></td>
+                                        <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Boarding Area:</b></td>
+                                        <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>No. of Passenger:</b></td>
+                                        <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
+                                    </tr>
                             </table>
-                        </div>
+                            <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
+                        </form>
                     </div>
+
+                </div>
+            
                 <div class = "form-row center-items mb-3">
                     <div class="card">
                     <table>
@@ -205,10 +237,10 @@ if(isset($_POST['submit'])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td>8:00 AM</td>
-                            <td>5:00 PM</td>
-                            <td>Avanza</td>
-                            <td>Don Quixote</td>
+                            <td><?php echo  $time_from?></td>
+                            <td><?php echo  $time_to?></td>
+                            <td><?php echo  $vehicle?></td>
+                            <td><?php echo  $driver?></td>
                             <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
                         </tr>
                     </table>
@@ -228,13 +260,13 @@ if(isset($_POST['submit'])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td>INN</td>
-                            <td>8:32 AM</td>
-                            <td>277148</td>
-                            <td>5:37 PM</td>
-                            <td>277185</td>
-                            <td>2</td>
-                            <td>Teddy Long</td>
+                            <td><?php echo  $vehicle?></td>
+                            <td><?php echo  $actual_dt?></td>
+                            <td><?php echo  $odo_out?></td>
+                            <td><?php echo  $actual_at?></td>
+                            <td><?php echo  $odo_in?></td>
+                            <td><?php echo  $waiting?></td>
+                            <td><?php echo  $guard_on_duty?></td>
                             <td><button data-target="costForm" class = "btn btn-success showButton">Add/Edit</button></td>
                         </tr>
                     </table>
@@ -256,14 +288,14 @@ if(isset($_POST['submit'])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td>INN</td>
-                            <td><input required name="departure" class="form-control col-md-2" value="" ></td>
-                            <td><input required name="odo_out" class="form-control col-md-2" value="" ></td>
-                            <td><input required name="arrival" class="form-control col-md-2" value="" ></td>
-                            <td><input required name="odo_in" class="form-control col-md-2" value="" ></td>
-                            <td><input required name="wait_time" class="form-control col-md-2" value="" ></td>
-                            <td><input required name="driver" class="form-control col-md-2" value="" ></td>
-                            <td><button type= "submit" class = "btn btn-success">Update</a></td>
+                            <td><input required name="vehicle" class="form-control col-md-2" value=<?php echo  $vehicle?> ></td>
+                            <td><input required name="actual_dt" class="form-control col-md-2" value=<?php echo  $actual_dt?> ></td>
+                            <td><input required name="odo_out" class="form-control col-md-2" value=<?php echo  $odo_out?> ></td>
+                            <td><input required name="actual_at" class="form-control col-md-2" value=<?php echo  $actual_at?> ></td>
+                            <td><input required name="odo_in" class="form-control col-md-2" value=<?php echo  $odo_in?> ></td>
+                            <td><input required name="waiting" class="form-control col-md-2" value=<?php echo  $waiting?> ></td>
+                            <td><input required name="guard_on_duty" class="form-control col-md-2" value=<?php echo  $guard_on_duty?> ></td>
+                            <td><button name = "submit_odo"type= "submit" class = "btn btn-success">Update</a></td>
                         </tr>
                     </table>
                     </form>
@@ -279,22 +311,22 @@ if(isset($_POST['submit'])){
                             <th>Charges</th>
                         </tr>
                         <tr align ="center">
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo  $vehicle?></td>
+                            <td><?php echo  $distance?> KM</td>
+                            <td><?php echo  $charge_amnt?></td>
                         </tr>
                     </table>
                     <table>
                         <td><b>Total Charges<b></td>
-                        <th>0.00</th>
+                        <th><?php echo  $charge_amnt?> php</th>
                     </table>
                     </div>
                 <div class = "card">
                             <table>
                                 <tr>
                                     <th>Payment Mode</th>
-                                    <th>Account Name</th>
-                                    <th>Account #/OR #</th>
+                                    <th>Account Number</th>
+                        
                                     <th>Amount</th>
                                     <th></th>
                                     <th></th>
@@ -308,8 +340,17 @@ if(isset($_POST['submit'])){
                                             <option value="cash">Cash</option>
                                         </select>
                                     </td>
-                                    <td><input readonly name="account" class="form-control col-md-2" value=""></td>
-                                    <td><input required name="or_num" class="form-control col-md-2" value=""></td>
+                                    <td><select name="account" class="form-control">
+                                        <?php
+                                        $sql = "SELECT accnt_no FROM accounts";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $accntNumber = $row['accnt_no'];
+                                            echo "<option value='$accntNumber'>$accntNumber</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    </td>
                                     <td><input required name="amount" class="form-control col-md-2" value=""></td>
                                     <td><input name="update_or" type="submit" class="btn btn-success" value="Update"></td>
                                     <td><input name="excelreport" type="submit" class="btn btn-success" value="Generate Statement"></td>
