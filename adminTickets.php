@@ -36,40 +36,32 @@ if(!empty($_SESSION["user_id"])){
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
-
         <main class="vertical">
-
             <div class ="card card-sidebar">
-                <nav class="sidebar">
-                    <ul class="ul-vertical">
-                        <li><a href="adminDashboard.php">Home</a></li>
-                        <li><a href="adminRequisition.php">Requisition</a></li>
-                        <li><a href="adminReservations.php">Reservations</a></li>
-                        <li><a href="adminTickets.php">Trip Tickets</a></li>
-                        <li><a href="adminCostings.php">Costing</a></li>
-                        <li><a href="adminVehicles.php">Vehicles</a></li>
-                        <li><a href="adminRates.php">Rates</a></li>
-                        <li><a href="adminDrivers.php">Drivers</a></li>
-                        <li><a href="adminAccounts.php">Accounts</a></li>
-                        <li><a href="adminReports.php">Reports</a></li>
-                    </ul>
-                </nav>
+            <nav class="sidebar">
+            <ul class="ul-vertical">
+                <li><a href="adminDashboard.php">Home</a></li>
+                <li><a href="adminRequisition.php">Requisition</a></li>
+                <li><a href="adminReservations.php">Reservations</a></li>
+                <li><a href="#">Trip Tickets</a></li>
+                <li><a href="adminCostings.php">Costing</a></li>
+                <li><a href="adminVehicles.php">Vehicles</a></li>
+                <li><a href="adminRates.php">Rates</a></li>
+                <li><a href="adminDrivers.php">Drivers</a></li>
+                <li><a href="adminAccounts.php">Accounts</a></li>
+                <li><a href="adminReports.php">Reports</a></li>
+            </ul>
+            </nav>
             </div>
-
             <div class="card">
-
                 <div class="cardHeader">
-                    <span class="float-left"><h1>Trip Tickets</h1></span>
+                <span class="float-left"><h1>Trip Tickets</h1></span>
                 </div>
-
                 <div class="cardBody">
                     
                 </div>
-
             </div>
-
         </main>
-
         <footer>       
             <div class ="footer-container">
                 <div class = "footer-container-2">
@@ -79,7 +71,6 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
-                </div>
             </div>
         </footer>
         <!--LOGOUT MODAL-->
