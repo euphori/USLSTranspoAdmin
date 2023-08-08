@@ -340,7 +340,7 @@ if(isset($_POST['submit_odo'])){
                             <th>Arrival Time</th>
                             <th>Vehicle</th>
                             <th>Driver</th>
-                            <th>Status<th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         <tr align ="center">

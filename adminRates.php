@@ -119,9 +119,9 @@ if(isset($_POST["submit"])){
                         </form>
                     </div>
                 </div>
-                <div class="table" >
+                <div class="table-fixed" >
                     <div class="column">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">ID</div>
                         </div>
                         <?php
@@ -146,7 +146,7 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Vehicle Type</div>
                         </div>
                         <?php
@@ -169,7 +169,7 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Gas Rate</div>
                         </div>
                         <?php
@@ -192,7 +192,7 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Flag-Down Rate</div>
                         </div>
                         <?php
@@ -215,7 +215,7 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Succeeding Rate</div>
                         </div>
                         <?php
@@ -238,7 +238,7 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Waiting Rate</div>
                         </div>
                         <?php
@@ -267,7 +267,7 @@ if(isset($_POST["submit"])){
                     
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Action</div>
                            
                         </div>
