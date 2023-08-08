@@ -159,33 +159,33 @@ if(isset($_POST['submit_odo'])){
                             <div class="cardBody"><?php echo  $date_reserve?></div>
                     </div>
                 </div>
-                <div class = "form-row">
-                    <div class = "card col-md-2">
+                <div class = " center-items form-row mb-3">
+                    <div class = "card col-md-3">
                     <div class="cardHeader"><h3>Request Details</h3></div>
                         <table>
                             <tr>
-                                <td><b>Requestor: <?php echo  $requestor?></b></td>
-                                <td></td>
+                                <td><b>Requestor:</b></td>
+                                <td><?php echo  $requestor?></td>
                             </tr>
                             <tr>
-                                <td><b>Contact No: <?php echo  $contact?></b></td>
-                                <td></td>
+                                <td><b>Contact No:</b></td>
+                                <td><?php echo  $contact?></td>
                             </tr>
                             <tr>
-                                <td><b>Destination: <?php echo  $destination?></b></td>
-                                <td></td>
+                                <td><b>Destination:</b></td>
+                                <td><?php echo  $destination?></td>
                             </tr>
                             <tr>
-                                <td><b>Purpose of Trip: <?php echo  $purpose?></b></td>
-                                <td></td>
+                                <td><b>Purpose of Trip:</b></td>
+                                <td><?php echo  $purpose?></td>
                             </tr>
                             <tr>
-                                <td><b>Boarding Area: <?php echo  $boarding?></b></td>
-                                <td></td>
+                                <td><b>Boarding Area:</b></td>
+                                <td><?php echo  $boarding?></td>
                             </tr>
                             <tr>
-                                <td><b>No. of Passenger: <?php echo  $pass_no?></b></td>
-                                <td></td>
+                                <td><b>No. of Passenger:</td>
+                                <td><?php echo  $pass_no?></b></td>
                             </tr>
                         </table>
                         <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
@@ -288,6 +288,7 @@ if(isset($_POST['submit_odo'])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
+<<<<<<< Updated upstream
                             <td><input required name="vehicle" class="form-control col-md-2" value=<?php echo  $vehicle?> ></td>
                             <td><input required name="actual_dt" class="form-control col-md-2" value=<?php echo  $actual_dt?> ></td>
                             <td><input required name="odo_out" class="form-control col-md-2" value=<?php echo  $odo_out?> ></td>
@@ -296,6 +297,16 @@ if(isset($_POST['submit_odo'])){
                             <td><input required name="waiting" class="form-control col-md-2" value=<?php echo  $waiting?> ></td>
                             <td><input required name="guard_on_duty" class="form-control col-md-2" value=<?php echo  $guard_on_duty?> ></td>
                             <td><button name = "submit_odo"type= "submit" class = "btn btn-success">Update</a></td>
+=======
+                            <td></td>
+                            <td><input required name="departure" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="odo_out" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="arrival" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="odo_in" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="wait_time" class="form-control col-md-2" value="" ></td>
+                            <td><input required name="driver" class="form-control col-md-2" value="" ></td>
+                            <td><button type= "submit" class = "btn btn-success">Update</a></td>
+>>>>>>> Stashed changes
                         </tr>
                     </table>
                     </form>

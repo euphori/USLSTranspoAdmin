@@ -212,7 +212,7 @@ if(!empty($_SESSION["user_id"])){
                                 View Request
                                 </a>
                                 <a class="btn btn-success" href = "delete.php?r_delete_id='.$data.'">
-                                View Trip Ticket
+                                Trip Ticket
                                 </a>
                             
                                 

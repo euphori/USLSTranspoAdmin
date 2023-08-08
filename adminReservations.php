@@ -224,14 +224,9 @@ if(!empty($_SESSION["user_id"])){
         
                                 $data = $row["res_id"];
                                 echo '<div class="item-cell">     
-                                    <button openForm class="btn btn-success">
-                                    Change
-                                    </button>
-                                    <a class="btn btn-danger" href = "delete.php?r_delete_id='.$data.'">
-                                    Remove
+                                    <a class="btn btn-success" href="adminReservations_review.php?ticket_id='.$data.'">
+                                    View Request
                                     </a>
-                                   
-                                    
                                     </div>
                                     ';
                               
