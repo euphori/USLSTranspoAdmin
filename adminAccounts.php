@@ -41,7 +41,7 @@ if(isset($_POST["submit"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: <?php echo  $row["user_name"]?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -125,6 +125,9 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Account Number</div>
+                            <button class = "sort-button">
+                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
+                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM accounts";
@@ -151,6 +154,7 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Office</div>
+                            
                         </div>
                         <?php
                         $sql = "SELECT * FROM accounts";

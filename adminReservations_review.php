@@ -3,10 +3,134 @@ require 'config.php';
 if(!empty($_SESSION["user_id"])){
     $id = $_SESSION["user_id"];
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
+  
     $row = mysqli_fetch_assoc($result);
+    $user_name = $row['user_name'];
 }else{
     header("Location: userLogin.php");
 }
+?>
+
+
+
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM requisition WHERE req_id = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+$req_id = $id;
+$requestor = $row['requestor'];
+$contact = $row['contact'];
+$email = $row['email'];
+$date_of_trip = $row['date_of_trip'];
+$destination = $row['destination'];
+$purpose = $row['purpose'];
+$boarding = $row['boarding'];
+$pass_no = $row['pass_no'];
+$date_reserve = $row['date_reserve'];
+$acctno_amnt =  $row['acctno_amnt'];
+$charge =  $row['charge'];
+if(isset($_POST['submit'])){
+    $requestor = $_POST['requestor'];
+    $contact = $_POST['contact'];
+    $email = $_POST['email'];
+    $date_of_trip = $_POST['date_of_trip'];
+    $destination = $_POST['destination'];
+    $purpose = $_POST['purpose'];
+    $boarding = $_POST['boarding'];
+    $pass_no =$_POST['pass_no'];
+    $id = $_GET['ticket_id'];
+    $sql = "UPDATE requisition set requestor = '$requestor', contact = '$contact',email = '$email' ,date_of_trip = '$date_of_trip', 
+    destination = '$destination', purpose = '$purpose' , boarding = '$boarding', pass_no = $pass_no WHERE req_id = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminReservations_review.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
+
+
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM reservation WHERE req_no = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$vehicle = $row['vehicle'];
+$time_from = $row['time_from'];
+$time_to = $row['time_to'];
+$driver = $row['driver'];
+$waiting = $row['waiting'];
+$actual_dt = $row['actual_dt'];
+$odo_out = $row['odo_out'];
+$actual_at = $row['actual_at'];
+$odo_in = $row['odo_in'];
+$guard_on_duty = $row['guard_on_duty'];
+$distance = $row['distance'];
+$gas_rate = $row['gas_rate'];
+$flag_rate = $row['flag_rate'];
+$succ_rate = $row['succ_rate'];
+$wait_rate = $row['wait_rate'];
+$charge_amnt = $row['charge_amnt'];
+if(isset($_POST['submit_odo'])){
+    
+    $waiting = $_POST['waiting'];   
+    $actual_dt = $_POST['actual_dt'];
+    $odo_out = $_POST['odo_out'];
+    $actual_at =$_POST['actual_at'];
+    $odo_in = $_POST['odo_in'];
+    $guard_on_duty = $_POST['guard_on_duty'];
+    $id = $_GET['ticket_id'];
+    
+
+    $distance = $odo_in - $odo_out ;
+    $charge_amnt = (($distance - 8) * $succ_rate) + $flag_rate;
+    $sql = "UPDATE reservation set waiting = $waiting, actual_dt = '$actual_dt',odo_out = $odo_out ,
+    actual_at = '$actual_at', guard_on_duty = '$guard_on_duty' ,distance = $distance, charge_amnt = $charge_amnt,
+    odo_in = $odo_in WHERE req_no = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminReservations_review.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+
+if(isset($_POST['submit_accnt'])){
+    $acctno_amnt = $_POST['acctno_amnt'];
+    $charge = $_POST['charge'];
+
+    $sql = "UPDATE requisition set acctno_amnt = '$acctno_amnt', charge = '$charge'
+     WHERE req_id = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminCostings_issuance.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
+?>
+
+
+
+<?php
+
+    echo $vehicle;
+    $sql = "SELECT * FROM vehicles WHERE v_code = '$vehicle'";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $v_code = $row['v_code'];
+    $v_name = $row['v_name'];
+    $v_seat_cap = $row['v_seat_cap'];
+    $v_platenum = $row['v_platenum'];
+
 ?>
 
 
@@ -27,7 +151,7 @@ if(!empty($_SESSION["user_id"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: <?php echo  $user_name?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -61,15 +185,15 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "form-row center-items mb-3">
                         <div class="card col-md-4">
                             <div class="cardHeader"><h4>Requisition Number</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $id?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date of Trip(s)</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_of_trip?></div>
                     </div>
                     <div class="card col-md-4">
                             <div class="cardHeader"><h4>Date Reserved</h4></div>
-                            <div class="cardBody"></div>
+                            <div class="cardBody"><?php echo  $date_reserve?></div>
                     </div>
                 </div>
                 <div class = "form-row center-items mb-3">
@@ -77,31 +201,31 @@ if(!empty($_SESSION["user_id"])){
                         <table>
                             <tr>
                                 <td><b>Requestor:</b></td>
-                                <td></td>
+                                <td><?php echo  $requestor?></td>
                             </tr>
                             <tr>
                                 <td><b>Contact No:</b></td>
-                                <td></td>
+                                <td><?php echo  $contact?></td>
                             </tr>
                             <tr>
                                 <td><b>Email:</b></td>
-                                <td></td>
+                                <td><?php echo  $email?></td>
                             </tr>
                             <tr>
                                 <td><b>Destination:</b></td>
-                                <td></td>
+                                <td><?php echo  $destination?></td>
                             </tr>
                             <tr>
                                 <td><b>Purpose of Trip:</b></td>
-                                <td></td>
+                                <td><?php echo  $purpose?></td>
                             </tr>
                             <tr>
                                 <td><b>Boarding Area:</b></td>
-                                <td></td>
+                                <td><?php echo  $boarding?></td>
                             </tr>
                             <tr>
                                 <td><b>No. of Passenger:</b></td>
-                                <td></td>
+                                <td><?php echo  $pass_no?></td>
                             </tr>
                         </table>
                         <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
@@ -116,10 +240,10 @@ if(!empty($_SESSION["user_id"])){
                                     <th>Plate Number</th>
                                 </tr>
                                 <tr align = "center">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?php echo  $vehicle?></td>
+                                    <td><?php echo  $v_name?></td>
+                                    <td><?php echo  $v_seat_cap?></td>
+                                    <td><?php echo  $v_platenum?></td>
                                 </tr>
                             </table>
                         </div>
@@ -127,11 +251,11 @@ if(!empty($_SESSION["user_id"])){
                             <table class="table-responsive">
                                 <tr>
                                     <td><b>Payment Mode:</b></td>
-                                    <td></td>
+                                    <td><?php echo  $charge?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Account Name:</b></td>
-                                    <td></td>
+                                    <td><?php echo  $acctno_amnt?></td>
                                 </tr>
                             </table>
                             <button data-target="accountInfo" class="btn btn-success showButton">Edit Details</button>
@@ -141,20 +265,31 @@ if(!empty($_SESSION["user_id"])){
                         <div class="cardHeader"><b>Edit Account Details</b></div>
                         <form method="post">
                         <table class="table-responsive">
-                                <tr>
+                        <tr>
                                     <td><b>Payment Mode:</b></td>
                                     <td>
-                                        <select class="form-control">
-                                            <option value="depository">Depository</option>
-                                            <option value="cash">Cash</option>
+                                        <select name = "charge" class="form-control">
+                                            <option value="1">Depository</option>
+                                            <option value="3">Cash</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><b>Account Name:</b></td>
-                                    <td></td>
+                                    <td><select name="acctno_amnt" class="form-control">
+                                        <?php
+                                        $sql = "SELECT accnt_no FROM accounts";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $accntNumber = $row['accnt_no'];
+                                            echo "<option value='$accntNumber'>$accntNumber</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    </td>
                                 </tr>
                             </table>
+                            <button name = "submit_accnt" type = "submit" class="btn btn-success mb-3">Update</button>
                         </form>
                         
                     </div>

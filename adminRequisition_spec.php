@@ -26,7 +26,7 @@ if(!empty($_SESSION["user_id"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: <?php echo  $row["user_name"]?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>

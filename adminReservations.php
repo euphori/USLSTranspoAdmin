@@ -27,7 +27,7 @@ if(!empty($_SESSION["user_id"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <!--?php echo  $row["a_email"]?--></div>
+                        <div class ="text-white">Logged In as: <?php echo  $row["user_name"]?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -207,7 +207,7 @@ if(!empty($_SESSION["user_id"])){
                             $counter = 1;
                             while ($row = $result->fetch_assoc()) {
         
-                                $data = $row["res_id"];
+                                $data = $row["req_no"];
                                 echo '<div class="item-cell">     
                                     <a class="btn btn-success" href="adminReservations_review.php?ticket_id='.$data.'">
                                     View Request
