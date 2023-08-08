@@ -68,14 +68,14 @@ if(!empty($_SESSION["user_id"])){
                         </button>
                     </div>
                     <?php
-                    $sql = "SELECT * FROM requisition";
+                    $sql = "SELECT * FROM reservation";
                     $result = $conn->query($sql);
                     // Loop through the retrieved data and populate the table rows
                     if ($result->num_rows > 0) {
                         $counter = 1;
                         while ($row = $result->fetch_assoc()) {
-                            if($row["req_mark"] == 1){
-                              $data = $row["req_id"];
+                            if($row["res_mark"] == 1){
+                              $data = $row["req_no"];
                             echo '<div class="item-cell">';
                             echo '<div class="text-item-cell">' .$data. '</div>';
                             echo '</div>';
@@ -100,13 +100,13 @@ if(!empty($_SESSION["user_id"])){
                         </button>
                     </div>
                     <?php
-                    $sql = "SELECT * FROM requisition";
+                    $sql = "SELECT * FROM reservation";
                     $result = $conn->query($sql);
                     // Loop through the retrieved data and populate the table rows
                     if ($result->num_rows > 0) {
                         $counter = 1;
                         while ($row = $result->fetch_assoc()) {
-                            if($row["req_mark"] == 1){
+                            if($row["res_mark"] == 1){
                                  $data = $row["date_of_trip"];
                             echo '<div class="item-cell">';
                             echo '<div class="text-item-cell">' . $data. '</div>';
@@ -133,13 +133,13 @@ if(!empty($_SESSION["user_id"])){
                         </button>
                     </div>
                     <?php
-                    $sql = "SELECT * FROM requisition";
+                    $sql = "SELECT * FROM reservation";
                     $result = $conn->query($sql);
                     // Loop through the retrieved data and populate the table rows
                     if ($result->num_rows > 0) {
                         $counter = 1;
                         while ($row = $result->fetch_assoc()) {
-                            if($row["req_mark"] == 1){
+                            if($row["res_mark"] == 1){
                                 $data = $row["date_reserve"];
                             echo '<div class="item-cell">';
                             echo '<div class="text-item-cell">' . $data. '</div>';
@@ -165,13 +165,13 @@ if(!empty($_SESSION["user_id"])){
                         </button>
                     </div>
                     <?php
-                    $sql = "SELECT * FROM requisition";
+                    $sql = "SELECT * FROM reservation";
                     $result = $conn->query($sql);
                     // Loop through the retrieved data and populate the table rows
                     if ($result->num_rows > 0) {
                         $counter = 1;
                         while ($row = $result->fetch_assoc()) {
-                            if($row["req_mark"] == 1){
+                            if($row["res_mark"] == 1){
                                    $data = $row["requestor"];
                             echo '<div class="item-cell">';
                             echo '<div class="text-item-cell">' . $data. '</div>';
@@ -198,15 +198,15 @@ if(!empty($_SESSION["user_id"])){
                     
                     </div>
                     <?php
-                    $sql = "SELECT * FROM requisition";
+                    $sql = "SELECT * FROM reservation";
                     
                         $result = $conn->query($sql);
                         // Loop through the retrieved data and populate the table rows
                         if ($result->num_rows > 0) {
                         $counter = 1;
                         while ($row = $result->fetch_assoc()) {
-                            if($row["req_mark"] == 1){
-                               $data = $row["req_id"];
+                            if($row["res_mark"] == 1){
+                               $data = $row["req_no"];
                             echo '<div class="item-cell">     
                                 <a class="btn btn-success" href = "adminCostings_compute.php?ticket_id='.$data.'">
                                 View Request
