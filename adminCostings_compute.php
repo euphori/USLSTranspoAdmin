@@ -191,7 +191,6 @@ if(isset($_POST['submit_odo'])){
                         <button data-target="requestInfo" class="btn btn-success showButton">Edit Details</button>
                     </div>
                     <!--Hidden Form-->
-<<<<<<< Updated upstream
                     <div id="requestInfo" class="card hidden col-md-3 mb-3">
                         <div class="cardHeader"><b>Edit Request Details</b></div>
                         <form method="POST">
@@ -220,50 +219,13 @@ if(isset($_POST['submit_odo'])){
                                         <td><b>No. of Passenger:</b></td>
                                         <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
                                     </tr>
-=======
-                <div id="requestInfo" class="card hidden col-md-3 mb-3">
-                    <div class="cardHeader"><b>Edit Request Details</b></div>
-                    <div class ="cardBody">
-                        <form method="POST">
-                            <table>
-                                <tr>
-                                    <td><b>Requestor:</b></td>
-                                    <td><input required name="requestor"  value=<?php echo  $requestor?> ></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Contact No:</b></td>
-                                    <td><input required name="contact"  value=<?php echo  $contact?> ></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Destination:</b></td>
-                                    <td><input required name="destination"  value=<?php echo  $destination?> ></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Purpose of Trip:</b></td>
-                                    <td><input required name="purpose"  value=<?php echo  $purpose?>></td>
-                                </tr>
-                                <tr>
-                                    <td><b>Boarding Area:</b></td>
-                                    <td><input required name="boarding"  value=<?php echo  $boarding?> ></td>
-                                </tr>
-                                <tr>
-                                    <td><b>No. of Passenger:</b></td>
-                                    <td><input required name="pass_no"  value=<?php echo  $pass_no?> ></td>
-                                </tr>
->>>>>>> Stashed changes
                             </table>
                             <button name = "submit" type = "submit" class="btn btn-success mb-3">Update</button>
                         </form>
                     </div>
-<<<<<<< Updated upstream
 
                 </div>
             
-=======
-                </div>
-                <!--Hidden Form-->
-                </div>
->>>>>>> Stashed changes
                 <div class = "form-row center-items mb-3">
                     <div class="card">
                     <table>
