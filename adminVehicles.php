@@ -75,7 +75,69 @@ if(isset($_POST["submit"])){
                 <span class="float-left"><h1>Vehicles</h1></span>
                 </div>
                 <div class="cardBody">
-                <button openForm class = "mb-3 btn btn-success">Create New Rates</button>
+                <button data-target="vehicleForm" class="btn btn-success showButton mb-3">Create New Record</button>
+                <!--Hidden-->
+                <div id="vehicleForm" class="card col-md-2 hidden">
+                    <div class="cardHeader"><h3>Add a New Vehicle</h3></div>
+                    <div class="cardBody">
+                        <form method="POST">
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Vehicle Code</label>
+                                        <input required name="v_code" class="form-control" placeholder="Vehicle Code">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Name/Brand</label>
+                                        <input required name="v_name" class="form-control" placeholder="Name/Brand">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Model/Series</label>
+                                        <input required name="v_model" class="form-control" placeholder="Model/Series">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Plate Number</label> 
+                                        <input required name="v_platenum" class="form-control" placeholder="Plate Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                    <label>Vehicle Type</label> 
+                                    <select class="form-control" name="v_type">
+                                        <option value="aircon_bus">Aircon Bus</option>
+                                        <option value="nonair_bus">Non Aircon Bus</option>
+                                        <option value="nonair_van">Van</option>
+                                        <option value="aircon_van">Aircon Van</option>
+                                    </select>
+                                    </div>
+                                    <div class = "col-md-2">
+                                    <label>Usage Rights</label> 
+                                    <select class="form-control" name="usage_rights">
+                                        <option value=1>ALL</option>
+                                        <option value=2>VC's & ADMIN</option>
+                                        <option value=3>ADMIN ONLY</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "form-group col-md-3">
+                                <label>Seating Capacity</label> 
+                                <input required name="v_seat_cap" class="form-control" placeholder="Seating Capacity">
+                            </div>
+                            <div class = "form-group">
+                                <button type="submit" name="submit" class="btn btn-success">Add Record</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+                <!--Hidden-->
                 <div class="table" >
                     
                     <div class="column-2">
@@ -323,12 +385,7 @@ if(isset($_POST["submit"])){
                             
 
                         ?>
-                        
-        
-               
-                        
                     </div>
-                
                 </div>
                 </div>
             </div>
@@ -342,6 +399,7 @@ if(isset($_POST["submit"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
         <!--LOGOUT MODAL-->
@@ -355,67 +413,8 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </dialog>
-        <!--FORM MODAL-->
-        <dialog newForm class="modal">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Add a New Vehicle</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Vehicle Code</label>
-                                <input required name="v_code" class="form-control" placeholder="Vehicle Code">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Name/Brand</label>
-                                <input required name="v_name" class="form-control" placeholder="Name/Brand">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Model/Series</label>
-                                <input required name="v_model" class="form-control" placeholder="Model/Series">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Plate Number</label> 
-                                <input required name="v_platenum" class="form-control" placeholder="Plate Number">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                            <label class="alt">Vehicle Type</label> 
-                            <select class="form-control" name="v_type">
-                                <option value="aircon_bus">Aircon Bus</option>
-                                <option value="nonair_bus">Non Aircon Bus</option>
-                                <option value="nonair_van">Van</option>
-                                <option value="aircon_van">Aircon Van</option>
-                            </select>
-                            </div>
-                            <div class = "col-md-2">
-                            <label class="alt">Usage Rights</label> 
-                            <select class="form-control" name="usage_rights">
-                                <option value=1>ALL</option>
-                                <option value=2>VC's & ADMIN</option>
-                                <option value=3>ADMIN ONLY</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "form-group col-md-3">
-                        <label class="alt">Seating Capacity</label> 
-                        <input required name="v_seat_cap" class="form-control" placeholder="Seating Capacity">
-                    </div>
-                    <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                    <button cancelForm class="btn btn-danger">Cancel</button>
-                </form>
-            </div>
-        </dialog>
         <script src="js/logoutModal.js"></script>
-        <script src="js/formModal.js"></script>
+        <script src="js/hiddenView.js"></script
         </script>
     </body>
 </html>

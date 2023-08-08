@@ -138,6 +138,9 @@ body {
     padding-right: 5px;
     padding-left: 5px;
 }
+.col-md-1{
+    max-width: 95%;
+}
 .col-md-2{
     max-width: 50%;
 }
@@ -589,6 +592,10 @@ footer{
 }
 
 /*- TABLES -*/
+.or_name  th:nth-child(1),
+.or_name td:nth-child(1) {
+    width: 400px;
+}
 th, td{
     padding: 5px;
 }

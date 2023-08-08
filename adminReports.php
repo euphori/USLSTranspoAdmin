@@ -75,7 +75,7 @@ if(!empty($_SESSION["user_id"])){
                             <td>From: <input type = "date" name="datefrom" value ="" onclick="GetDate(this);"></td>
                             <td>To: <input type = "date" name="dateto" value="" onclick="GetDate(this);"> </td>
                             <td>Sort by:
-                                 <select>
+                                 <select class="">
                                     <option value="req_no">Req No.</option>
                                     <option value="vehicle">Vehicle</option>
                                     <option value="driver">Driver</option>

@@ -72,7 +72,27 @@ if(isset($_POST["submit"])){
                 <span class="float-left"><h1>Accounts</h1></span>
                 </div>
                 <div class="cardBody">
-                <button openForm class = "btn btn-success mb-3 ">Create a New Account</button>
+                <button data-target="accountsForm" class = "btn btn-success mb-3 showButton">Create a New Account</button>
+                <div id="accountsForm" class="card col-md-2 hidden">
+                    <div class="cardHeader"><h3>Add a New Account</h3></div>
+                    <div class="cardBody">
+                        <form method="POST">
+                            <div class = "form-group">
+                                <div class = "form-row">
+                                    <div class = "col-md-2">
+                                        <label>Account Number</label>
+                                        <input required name="accnt_no" class="form-control" placeholder="Account Number">
+                                    </div>
+                                    <div class = "col-md-2">
+                                        <label>Office</label>
+                                        <input required name="accnt_name" class="form-control" placeholder="Office">
+                                    </div>
+                                </div>
+                            </div>
+                            <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="table" >
                     <div class="column">
                         <div class="header-cell" >
@@ -227,35 +247,7 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </dialog>
-        <!--FORM MODAL-->
-        <dialog newForm class="modal">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Add a New Account</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Account Number</label>
-                                <input required name="accnt_no" class="form-control" placeholder="Account Number">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Office</label>
-                                <input required name="accnt_name" class="form-control" placeholder="Office">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                    <button cancelForm class="btn btn-danger">Cancel</button>
-                </form>
-            </div>
-        </dialog>
-       
-                    
-       
         <script src="js/logoutModal.js"></script>
-        <script src="js/formModal.js"></script>
-        
+        <script src="js/hiddenView.js"></script>
     </body>
 </html>

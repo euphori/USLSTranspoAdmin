@@ -322,8 +322,9 @@ if(isset($_POST['submit_odo'])){
                     </table>
                     </div>
                 <div class = "card">
-                            <table>
+                            <table class="or_name">
                                 <tr>
+                                    <th>Account Name</th>
                                     <th>Payment Mode</th>
                                     <th>Account Number</th>
                         
@@ -334,6 +335,7 @@ if(isset($_POST['submit_odo'])){
                                 
                                 <tr align = "center">
                                 <form method="post">
+                                <td><input readonly name="account" class="form-control col-md-1" value=""></td>
                                     <td>
                                         <select class="form-control">
                                             <option value="depository">Depository</option>
