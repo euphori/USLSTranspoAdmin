@@ -65,10 +65,10 @@ if(!empty($_SESSION["user_id"])){
                         <span class="float-left"><h3>Online Requests</h3></span>
                 </div>
                 <div class="cardBody">
-                <div class="table" >
+                <div class="table-fixed" >
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Requisition Number</div>
 
                         </div>
@@ -95,7 +95,7 @@ if(!empty($_SESSION["user_id"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Date of Trip(s)</div>
                         </div>
                         <?php
@@ -121,7 +121,7 @@ if(!empty($_SESSION["user_id"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Date Reserved</div>    
                         </div>
                         <?php
@@ -147,7 +147,7 @@ if(!empty($_SESSION["user_id"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Reservation(s) of</div>
                         </div>
                         <?php
@@ -173,7 +173,7 @@ if(!empty($_SESSION["user_id"])){
                         
                     </div>
                     <div class="column-2">
-                        <div class="header-cell" >
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Status</div>
                         </div>
                         <?php
