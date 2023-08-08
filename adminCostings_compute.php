@@ -313,12 +313,11 @@ if(isset($_POST['submit_odo'])){
                         <tr align ="center">
                             <td><?php echo  $vehicle?></td>
                             <td><?php echo  $distance?> KM</td>
-                            <td><?php echo  $charge_amnt?></td>
                         </tr>
                     </table>
                     <table>
-                        <td><b>Total Charges<b></td>
-                        <th><?php echo  $charge_amnt?> php</th>
+                        <th align="left">Total Charges</th>
+                        <th>PHP <?php echo  $charge_amnt?>.00</th>
                     </table>
                     </div>
                 <div class = "card">
