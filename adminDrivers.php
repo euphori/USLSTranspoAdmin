@@ -74,7 +74,7 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="cardBody">
                 <button data-target="driverForm"class = "btn btn-success mb-3 showButton">Create a New Record</button>
-                <div id="driverForm" class="card hidden col-md-2">
+                <div id="driverForm" class="card col-md-2 mb-3 hidden">
                 <div class="cardHeader"><h3>Add a New Account<h3></div>
                     <div class="cardBody">
                         <form method="POST">

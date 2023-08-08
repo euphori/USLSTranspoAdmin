@@ -75,7 +75,7 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="cardBody">
                 <button data-target="ratesForm" class = "mb-3 btn btn-success showButton">Create New Rates</button>
-                <div id="ratesForm" class="card hidden col-md-2">
+                <div id="ratesForm" class="card col-md-2 mb-3 hidden">
                     <div class="cardHeader"><h3 class>Create New Rates</h3></div>
                     <div class="cardBody">
                     <form method="POST">

@@ -77,7 +77,7 @@ if(isset($_POST["submit"])){
                 <div class="cardBody">
                 <button data-target="vehicleForm" class="btn btn-success showButton mb-3">Create New Record</button>
                 <!--Hidden-->
-                <div id="vehicleForm" class="card col-md-2 hidden">
+                <div id="vehicleForm" class="card col-md-2 mb-3 hidden">
                     <div class="cardHeader"><h3>Add a New Vehicle</h3></div>
                     <div class="cardBody">
                         <form method="POST">
