@@ -136,7 +136,6 @@ if(isset($_POST["submit"])){
                         </form>
                     </div>
                 </div>
-                </div>
                 <!--Hidden-->
                 <div class="table" >
                     
@@ -387,6 +386,8 @@ if(isset($_POST["submit"])){
                         ?>
                     </div>
                 </div>
+                </div>
+                
                 </div>
             </div>
         </main>

@@ -105,7 +105,6 @@ if(isset($_POST["submit"])){
                         </form>
                     </div>
                 </div>
-                </div>
                 <div class="table" >
                     <div class="column">
                         <div class="header-cell" >
@@ -324,6 +323,8 @@ if(isset($_POST["submit"])){
                         
                     </div>
                 </div>
+                </div>
+                
                 </div>
 
             </div>
