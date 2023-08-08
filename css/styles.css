@@ -937,7 +937,7 @@ th{
     border-color: #243303;
     display: flex;
     gap: 12px;
-    height: 64px;
+    height: 32px;
     padding: 12px 24px;
     position: relative;
 }

@@ -78,9 +78,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Requisition Number</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM requisition";
@@ -111,9 +108,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Date of Trip(s)</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM requisition";
@@ -143,9 +137,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Date Reserved</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM requisition";
@@ -175,9 +166,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Reservation(s) of</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM requisition";

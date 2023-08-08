@@ -63,9 +63,6 @@ if(!empty($_SESSION["user_id"])){
                 <div class="column-2">
                     <div class="header-cell-sticky" >
                         <div class = "text-header-cell">Requisition Number</div>
-                        <button class = "sort-button">
-                        <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                        </button>
                     </div>
                     <?php
                     $sql = "SELECT * FROM reservation";
@@ -95,9 +92,6 @@ if(!empty($_SESSION["user_id"])){
                 <div class="column-2">
                     <div class="header-cell-sticky" >
                         <div class = "text-header-cell">Date of Trip</div>
-                        <button class = "sort-button">
-                        <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                        </button>
                     </div>
                     <?php
                     $sql = "SELECT * FROM reservation";
@@ -128,9 +122,6 @@ if(!empty($_SESSION["user_id"])){
                 <div class="column-2">
                     <div class="header-cell-sticky" >
                         <div class = "text-header-cell">Date Reserved</div>
-                        <button class = "sort-button">
-                        <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                        </button>
                     </div>
                     <?php
                     $sql = "SELECT * FROM reservation";
@@ -160,9 +151,6 @@ if(!empty($_SESSION["user_id"])){
                 <div class="column-2">
                     <div class="header-cell-sticky" >
                         <div class = "text-header-cell">Reservation(s) of</div>
-                        <button class = "sort-button">
-                        <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                        </button>
                     </div>
                     <?php
                     $sql = "SELECT * FROM reservation";

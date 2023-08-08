@@ -148,9 +148,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Vehicle Type</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM rates";
@@ -174,9 +171,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Gas Rate</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM rates";
@@ -200,9 +194,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Flag-Down Rate</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM rates";
@@ -226,9 +217,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Succeeding Rate</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM rates";
@@ -252,9 +240,6 @@ if(isset($_POST["submit"])){
                     <div class="column-2">
                         <div class="header-cell" >
                             <div class = "text-header-cell">Waiting Rate</div>
-                            <button class = "sort-button">
-                               <img src = "assets/Sort_arrow_light.png" class = "sort-button-image">
-                            </button>
                         </div>
                         <?php
                         $sql = "SELECT * FROM rates";
