@@ -49,7 +49,7 @@
                         <li><a href="adminRequisition.php">Requisition</a></li>
                         <li><a href="adminReservations.php">Reservations</a></li>
                         <li><a href="adminTickets.php">Trip Tickets</a></li>
-                        <li><a href="adminCosting.php">Costing</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
                         <li><a href="adminVehicles.php">Vehicles</a></li>
                         <li><a href="adminRates.php">Rates</a></li>
                         <li><a href="adminDrivers.php">Drivers</a></li>
