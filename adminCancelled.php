@@ -107,7 +107,6 @@ if(isset($_POST["submit"])){
                     </div>
 
                     <div class="column-2">
-                        S
                         <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Date of Trip(s)</div>
                         </div>
