@@ -94,6 +94,7 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
         <!--LOGOUT MODAL-->

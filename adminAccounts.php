@@ -1,25 +1,24 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["user_id"])){
-    $id = $_SESSION["user_id"];
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
-    $row = mysqli_fetch_assoc($result);
-}else{
-    header("Location: userLogin.php");
-}
+    require 'config.php';
+    if(!empty($_SESSION["user_id"])){
+        $id = $_SESSION["user_id"];
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
+        $row = mysqli_fetch_assoc($result);
+    }else{
+        header("Location: userLogin.php");
+    }
 ?>
 
 <?php
 
-if(isset($_POST["submit"])){
-    $accnt_no = $_POST["accnt_no"];
-    $accnt_name = $_POST["accnt_name"];
-    $query = "INSERT INTO accounts VALUES('', '$accnt_no','$accnt_name','','','')";
-    mysqli_query($conn,$query);
-    echo
-    "<script> alert('Added'); </script>";
-
-}
+    if(isset($_POST["submit"])){
+        $accnt_no = $_POST["accnt_no"];
+        $accnt_name = $_POST["accnt_name"];
+        $query = "INSERT INTO accounts VALUES('', '$accnt_no','$accnt_name','','','')";
+        mysqli_query($conn,$query);
+        echo
+        "<script> alert('Added'); </script>";
+    }
 ?>
 
 
@@ -31,13 +30,15 @@ if(isset($_POST["submit"])){
         <meta charset = "utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name = "viewport" content = "width=device-width" initial-scale= 1, shrink-to-fit="no">
-        <title>Dashboard</title>
+        <title>Accounts</title>
 
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/datatables.css" rel="stylesheet">
     </head>
+
     <body>
         <header>
+
             <nav>
                 <ul>
                     <li>
@@ -46,180 +47,201 @@ if(isset($_POST["submit"])){
                     <li><a openLogout>Log Out</a></li>
                 </ul>
             </nav>
+
             <div class = "logo-placeholder">
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
+
         </header>
+
         <main class="vertical">
+
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="#">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="adminReports.php">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="card">
+                
                 <div class="cardHeader">
                 <span class="float-left"><h1>Accounts</h1></span>
                 </div>
+
                 <div class="cardBody">
-                <button data-target="accountsForm" class = "btn btn-success mb-3 showButton">Create a New Account</button>
-                <div id="accountsForm" class="card col-md-2 mb-3 hidden">
-                    <div class="cardHeader"><h3>Add a New Account</h3></div>
-                    <div class="cardBody">
-                        <form method="POST">
-                            <div class = "form-group">
-                                <div class = "form-row">
-                                    <div class = "col-md-2">
-                                        <label>Account Number</label>
-                                        <input required name="accnt_no" class="form-control" placeholder="Account Number">
-                                    </div>
-                                    <div class = "col-md-2">
-                                        <label>Office</label>
-                                        <input required name="accnt_name" class="form-control" placeholder="Office">
+                    <button data-target="accountsForm" class = "btn btn-success mb-3 showButton">Create a New Account</button>
+
+                    <!-- ADD NEW ACCOUNT FORM -->
+
+                    <div id="accountsForm" class="card col-md-2 mb-3 hidden">
+
+                        <div class="cardHeader"><h3>Add a New Account</h3></div>
+
+                        <div class="cardBody">
+                            <form method="POST">
+
+                                <div class = "form-group">
+                                    <div class = "form-row">
+                                        <div class = "col-md-2">
+                                            <label>Account Number</label>
+                                            <input required name="accnt_no" class="form-control" placeholder="Account Number">
+                                        </div>
+                                        <div class = "col-md-2">
+                                            <label>Office</label>
+                                            <input required name="accnt_name" class="form-control" placeholder="Office">
+                                        </div>
                                     </div>
                                 </div>
+                                <button type="submit" name="submit" class="btn btn-success">Add Record</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- END OF ADD NEW ACCOUNT FORM -->
+
+                    <div class="table-fixed" >
+                        <div class="column">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">ID</div>
                             </div>
-                            <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="table-fixed" >
-                    <div class="column">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">ID</div>
-                        </div>
-                        <?php
-                            $sql = "SELECT * FROM accounts";
-                            $result = $conn->query($sql);
-                            // Loop through the retrieved data and populate the table rows
-                            if ($result->num_rows > 0) {
-                                $counter = 1;
-                                while ($row = $result->fetch_assoc()) {
-                                    $data = $row["accnt_id"];
-                                    echo '<div class="item-cell">';
-                                    echo '<div class="text-item-cell">' .$row["accnt_id"]. '</div>';
-                                    echo '</div>';
-                                    $counter++;
+
+                            <?php
+
+                                $sql = "SELECT * FROM accounts";
+                                $result = $conn->query($sql);
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+                                    $counter = 1;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $data = $row["accnt_id"];
+                                        echo '<div class="item-cell">';
+                                        echo '<div class="text-item-cell">' .$row["accnt_id"]. '</div>';
+                                        echo '</div>';
+                                        $counter++;
+                                    }
+                                } 
+                                else {
+                                    echo "No data found in the database.";
                                 }
-                            } else {
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">No data found in the database.</div>';
-                                echo '</div>';
-                            }
 
-                        ?>
-        
-               
-                        
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Account Number</div>
+                            ?>
+            
                         </div>
-                        <?php
-                        $sql = "SELECT * FROM accounts";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["accnt_no"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $row["accnt_no"] . '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
 
-                        ?>
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Account Number</div>
+                            </div>
+
+                            <?php
+
+                                $sql = "SELECT * FROM accounts";
+                                $result = $conn->query($sql);
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+                                    $counter = 1;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $data = $row["accnt_no"];
+                                        echo '<div class="item-cell">';
+                                        echo '<div class="text-item-cell">' . $row["accnt_no"] . '</div>';
+                                        echo '</div>';
+                                        $counter++;
+                                    }
+                                } 
+                                else {
+                                    echo "No data found in the database.";
+                                }
+
+                            ?>
         
-               
+                        </div>
+
+                        <div class="column-2">
+
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Office</div>
+                            </div>
+
+                            <?php
+
+                                $sql = "SELECT * FROM accounts";
+                                $result = $conn->query($sql);
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+                                    $counter = 1;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $data = $row["accnt_name"];
+                                        echo '<div class="item-cell">';
+                                        echo '<div class="text-item-cell">' . $row["accnt_name"] . '</div>';
+                                        echo '</div>';
+                                        $counter++;
+                                    }
+                                } 
+                                else {
+                                    echo "No data found in the database.";
+                                }
+
+                            ?>
+    
+                        </div>
                         
-                    </div>
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Office</div>
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Action</div>
                             
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM accounts";
-                        $result = $conn->query($sql);
-                        // Loop through the retrieved data and populate the table rows
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                $data = $row["accnt_name"];
-                                echo '<div class="item-cell">';
-                                echo '<div class="text-item-cell">' . $row["accnt_name"] . '</div>';
-                                echo '</div>';
-                                $counter++;
-                            }
-                        } else {
-                            echo "No data found in the database.";
-                        }
+                            </div>
+                            <?php
 
-                        ?>
-        
-               
-                        
-                    </div>
-                    
-                    <div class="column-2">
-                        <div class="header-cell-sticky" >
-                            <div class = "text-header-cell">Action</div>
-                           
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM accounts";
-                        
-                            $result = $conn->query($sql);
-                            // Loop through the retrieved data and populate the table rows
-                            if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-        
-                                $accnt_id = $row["accnt_id"];
-                                echo '<div class="item-cell">     
-                                    <a class="btn btn-success" href = "updateAccounts.php?update_id='.$accnt_id.'">
-                                    Change
-                                    </a>
-                                    <a class="btn btn-danger" href = "delete.php?acc_delete_id='.$accnt_id.'">
-                                    Remove
-                                    </a>
-                                   
-                                    
-                                    </div>
-                                    ';
-                              
-                                $counter++;
-                            }
-                            } else {
-                            echo "No data found in the database.";
-                            }
-                            
-
-                        ?>
-                        
-        
-               
-                        
-                    </div>
+                                $sql = "SELECT * FROM accounts";
+                                $result = $conn->query($sql);
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+                                    $counter = 1;
+                                    while ($row = $result->fetch_assoc()) {
                 
-                </div>
-            </div>
+                                        $accnt_id = $row["accnt_id"];
+                                        echo '<div class="item-cell">     
+                                            <a class="btn btn-success" href = "updateAccounts.php?update_id='.$accnt_id.'">
+                                            Change
+                                            </a>
+                                            <a class="btn btn-danger" href = "delete.php?acc_delete_id='.$accnt_id.'">
+                                            Remove
+                                            </a>
+                                        
+                                            
+                                            </div>
+                                            ';
+                                    
+                                        $counter++;
+                                    }
+                                } 
+                                else {
+                                    echo "No data found in the database.";
+                                }
+                                
+                            ?>
+            
+                        </div>
+
+                    </div> <!-- TABLE -->
+                </div> <!-- CARDBODY -->
+            </div> <!-- CARD -->
         </main>
+
         <footer>       
             <div class ="footer-container">
                 <div class = "footer-container-2">
@@ -229,8 +251,10 @@ if(isset($_POST["submit"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
+
         <!--LOGOUT MODAL-->
         <dialog modalLogout class="modal">
             <div class="modal-content">
@@ -242,7 +266,9 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </dialog>
+
         <script src="js/logoutModal.js"></script>
         <script src="js/hiddenView.js"></script>
+
     </body>
 </html>
