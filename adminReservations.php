@@ -44,7 +44,7 @@
                     <ul class="ul-vertical">
                         <li><a href="adminDashboard.php">Home</a></li>
                         <li><a href="adminRequisition.php">Requisition</a></li>
-                        <li><a href="adminReservations">Reservations</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
                         <li><a href="adminTickets.php">Trip Tickets</a></li>
                         <li><a href="adminCostings.php">Costing</a></li>
                         <li><a href="adminVehicles.php">Vehicles</a></li>
