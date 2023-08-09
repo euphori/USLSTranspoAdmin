@@ -4,11 +4,48 @@ if(!empty($_SESSION["user_id"])){
     $id = $_SESSION["user_id"];
     $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
     $row = mysqli_fetch_assoc($result);
+    $user_name = $row['user_name'];
 }else{
     header("Location: userLogin.php");
 }
 ?>
 
+<?php
+
+$category = isset($_POST['category']) ? $_POST['category'] : '';
+
+if (isset($_POST['submit_cat']) ) {
+    $category = $_POST['category'];
+    $sql = "SELECT DISTINCT $category FROM reservation";
+    $result = mysqli_query($conn, $sql);
+
+    // Populate options for the names dropdown
+    $nameOptions = '';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $name = $row[$category];
+        $nameOptions .= "<option value='$name'>$name</option>";
+    }
+}
+
+// Process form submission and generate $nameOptions
+
+$categoryOptions = array(
+    'vehicle' => 'Vehicles',
+    'driver' => 'Driver',
+    'requestor' => 'Requestor',
+    'acctno_amnt' => 'Accounts'
+);
+
+$categorySelect = '<select type="submit" id="category" name="category" required="yes">';
+$categorySelect .= '<option>Select...</option>';
+
+foreach ($categoryOptions as $value => $label) {
+    $selected = ($category === $value) ? 'selected' : '';
+    $categorySelect .= "<option value=\"$value\" $selected>$label</option>";
+}
+
+$categorySelect .= '</select>';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +64,7 @@ if(!empty($_SESSION["user_id"])){
             <nav>
                 <ul>
                     <li>
-                        <div class ="text-white">Logged In as: <?php echo  $row["user_name"]?></div>
+                        <div class ="text-white">Logged In as: <?php echo  $user_name?></div>
                     </li>
                     <li><a openLogout>Log Out</a></li>
                 </ul>
@@ -69,20 +106,450 @@ if(!empty($_SESSION["user_id"])){
                     <span class="float-left"><h3>Generate Report (By Category)</h3></span>
                 </div>
                 <div class="cardBody">
+                    
                     <form name = "reportForm" id="reportform" method="post">
                         <table>
                             <tr>
-                                <td><select name="select_mode" required="yes" onchange="this.form.submit()">
-                                        <option>Select...</option>
-	                                    <option value="vehicle">Vehicles</option> 
-	                                    <option value="driver">Driver</option> 
-		                                <option value="requestor">Requestor</option>
-		                                <option value="acctno_amnt">Accounts</option>
+                            
+                                <td>
+                                    <?php echo $categorySelect; ?>
+                                </td>
+                                <td>
+                                <button name = "submit_cat"type= "submit" class = "btn btn-success">Search</a>
+                                </td>
+                                <td>
+                                <select id="nameSelect" name="name" class="form-control">
+                                        <option value="">Select...</option>
+                                        <?php echo $nameOptions; ?>
+                                </select>
+                                </td>
+                                <td>From: <input type = "date" name="start_date" value =""></td>
+                                <td>To: <input type = "date" name="end_date" value="" > </td>
+                                <td>Sort by:
+                                    <select name = "sorting_column"class="">
+                                        <option value="req_no">Req No.</option>
+                                        <option value="vehicle">Vehicle</option>
+                                        <option value="driver">Driver</option>
+                                        <option value="date_of_trip">Date of Trip</option>
                                     </select>
+                                </td>
+                                <td>
+                                <button name = "generate"type= "submit" class = "btn btn-success">Generate Table</a>
                                 </td>
                             </tr>
                         </table>
                     </form>
+
+                    <div class="table-fixed" >
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Requisition Number</div>
+                            </div>
+                            <?php
+                                if(isset($_POST['generate'])){
+                                    // Define the date range
+                                    $start_date = $_POST['start_date'];
+                                    $end_date = $_POST['end_date'];
+                                    $sorting_column = $_POST['sorting_column'];
+                                  
+                                    $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                    $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                    // SQL query to retrieve data between the specified dates
+                                    $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                    $result = $conn->query($sql);
+
+                                 }
+                                // Loop through the retrieved data and populate the table rows
+                                if ($result->num_rows > 0) {
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        $data = $row["req_no"];
+                                        echo '<div class="item-cell">';
+                                        echo '<div class="text-item-cell">' .$data. '</div>';
+                                        echo '</div>';   
+                                        
+                                    }
+                                } else {
+                                    echo "No data found in the database.";
+                                }
+
+                            ?>
+
+
+                            
+                        </div>
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Date of Trip</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["date_of_trip"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Time From</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["time_from"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Time To</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["time_to"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Requestor</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["requestor"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Vehicle</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date'  ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["vehicle"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Destination</div>
+                            </div>
+                            <?php
+
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["destination"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Driver</div>
+                            </div>
+                            <?php
+
+                            if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                            
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date'  ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                            }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                  
+                                    $data = $row["driver"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                    
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Charges</div>
+                            </div>
+                            <?php
+                            if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date'  ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                   
+                                        $data = $row["charge_amnt"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                   
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+
+
+                        <div class="column-2">
+                            <div class="header-cell-sticky" >
+                                <div class = "text-header-cell">Acct./Or.</div>
+                            </div>
+                            <?php
+                                
+                               if(isset($_POST['generate'])){
+                                // Define the date range
+                                $start_date = $_POST['start_date'];
+                                $end_date = $_POST['end_date'];
+                                $sorting_column = $_POST['sorting_column'];
+                              
+                                $formated_start_date = date('m/d/Y', strtotime($start_date));
+                                $formated_end_date = date('m/d/Y', strtotime($end_date));
+                                // SQL query to retrieve data between the specified dates
+                                $sql = "SELECT * FROM reservation WHERE date_of_trip BETWEEN '$formated_start_date' AND '$formated_end_date' ORDER BY $sorting_column";
+                                $result = $conn->query($sql);
+
+                             }
+                            // Loop through the retrieved data and populate the table rows
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    $data = $row["acctno_amnt"];
+                                    echo '<div class="item-cell">';
+                                    echo '<div class="text-item-cell">' . $data. '</div>';
+                                    echo '</div>';
+                                    $counter++;
+                                  
+                                
+                                }
+                            } else {
+                                echo "No data found in the database.";
+                            }
+
+                            ?>
+
+
+                            
+                        </div>
+
+                        </div>
+
+                </div>
                 </div>
             </div>
         </main>
@@ -109,5 +576,6 @@ if(!empty($_SESSION["user_id"])){
             </div>
           </dialog>
         <script src="js/logoutModal.js"></script>
+                                            
     </body>
 </html>
