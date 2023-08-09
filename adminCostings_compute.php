@@ -104,6 +104,58 @@
 ?>
 
 
+<?php
+$id = $_GET['ticket_id'];
+$sql = "SELECT * FROM reservation WHERE req_no = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$vehicle = $row['vehicle'];
+$time_from = $row['time_from'];
+$time_to = $row['time_to'];
+$driver = $row['driver'];
+$waiting = $row['waiting'];
+$actual_dt = $row['actual_dt'];
+$odo_out = $row['odo_out'];
+$actual_at = $row['actual_at'];
+$odo_in = $row['odo_in'];
+$guard_on_duty = $row['guard_on_duty'];
+$distance = $row['distance'];
+$gas_rate = $row['gas_rate'];
+$flag_rate = $row['flag_rate'];
+$succ_rate = $row['succ_rate'];
+$wait_rate = $row['wait_rate'];
+$charge_amnt = $row['charge_amnt'];
+if(isset($_POST['submit_odo'])){
+    
+    $waiting = $_POST['waiting'];   
+    $actual_dt = $_POST['actual_dt'];
+    $odo_out = $_POST['odo_out'];
+    $actual_at =$_POST['actual_at'];
+    $odo_in = $_POST['odo_in'];
+    $guard_on_duty = $_POST['guard_on_duty'];
+    $id = $_GET['ticket_id'];
+    
+
+
+    /* CHARGE AMMOUNT FORMULA */
+    $distance = $odo_in - $odo_out ;
+    $charge_amnt = (($distance - 8) * $succ_rate) + $flag_rate;
+
+    $sql = "UPDATE reservation set waiting = $waiting, actual_dt = '$actual_dt',odo_out = $odo_out ,
+    actual_at = '$actual_at', guard_on_duty = '$guard_on_duty' ,distance = $distance, charge_amnt = $charge_amnt,
+    odo_in = $odo_in WHERE req_no = $id";
+    $result = mysqli_query($conn,$sql);
+
+    if($result){   
+        header('location:adminCostings_compute.php?ticket_id='.$id);
+    }else{
+        die(mysqli_error($conn));
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>

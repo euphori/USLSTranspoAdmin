@@ -350,29 +350,25 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- End of Edit Request Details Form-->
-
-                    <div class = "form-row center-items mb-3">
-                        <div class="card">
-                        <table>
-                            <tr>
-                                <th>Departure Time</th>
-                                <th>Arrival Time</th>
-                                <th>Vehicle</th>
-                                <th>Driver</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr align ="center">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
-                            </tr>
-                        </table>
-                        </div>
-                        
+                    <!--Hidden Form-->
+                <div class = "form-row center-items mb-3">
+                    <div class="card">
+                    <table>
+                        <tr>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Vehicle</th>
+                            <th>Driver</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr align ="center">
+                            <td><?php echo  $time_from?></td>
+                            <td><?php echo  $time_to?></td>
+                            <td><?php echo  $vehicle?></td>
+                            <td><?php echo  $driver?></td>
+                            <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
+                        </tr>
+                    </table>
                     </div>
 
                     <div class = "form-row float-right">
@@ -414,6 +410,6 @@
 
         <script src="js/logoutModal.js"></script>
         <script src="js/hiddenView.js"></script>
-        
+
     </body>
 </html>
