@@ -1,64 +1,64 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["user_id"])){
-    $id = $_SESSION["user_id"];
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
-    $row = mysqli_fetch_assoc($result);
-    $user_name = $row['user_name'];
-}else{
-    header("Location: userLogin.php");
-}
+    require 'config.php';
+    if(!empty($_SESSION["user_id"])){
+        $id = $_SESSION["user_id"];
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
+        $row = mysqli_fetch_assoc($result);
+        $user_name = $row['user_name'];
+    }else{
+        header("Location: userLogin.php");
+    }
 ?>
 
 <?php
-$id = $_GET['update_id'];
-$sql = "SELECT * FROM vehicles WHERE v_id = $id";
-$result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
-$v_code = $row['v_code'];
-$v_name = $row['v_name'];
-$v_model = $row['v_model'];
-$v_platenum = $row['v_platenum'];
-$v_seat_cap = $row['v_seat_cap'];
-$v_type = $row['v_type'];
-$usage_rights = $row['usage_rights'];
-
-if(isset($_POST['submit'])){
-    $v_code = $_POST['v_code'];
-    $v_name = $_POST['v_name'];
-    $v_model = $_POST['v_model'];
-    $v_platenum = $_POST['v_platenum'];
-    $v_seat_cap = $_POST['v_seat_cap'];
-    $v_type = $_POST['v_type'];
-    $usage_rights = $_POST['usage_rights'];
     $id = $_GET['update_id'];
-    $sql = "UPDATE vehicles set v_code = '$v_code', v_name = '$v_name',v_model = '$v_model' ,v_platenum = '$v_platenum', v_seat_cap = $v_seat_cap, v_type = '$v_type',usage_rights = '$usage_rights' WHERE v_id = $id";
+    $sql = "SELECT * FROM vehicles WHERE v_id = $id";
     $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $v_code = $row['v_code'];
+    $v_name = $row['v_name'];
+    $v_model = $row['v_model'];
+    $v_platenum = $row['v_platenum'];
+    $v_seat_cap = $row['v_seat_cap'];
+    $v_type = $row['v_type'];
+    $usage_rights = $row['usage_rights'];
 
-    if($result){
-        header('location:adminVehicles.php');
-    }else{
-        die(mysqli_error($conn));
+    if(isset($_POST['submit'])){
+        $v_code = $_POST['v_code'];
+        $v_name = $_POST['v_name'];
+        $v_model = $_POST['v_model'];
+        $v_platenum = $_POST['v_platenum'];
+        $v_seat_cap = $_POST['v_seat_cap'];
+        $v_type = $_POST['v_type'];
+        $usage_rights = $_POST['usage_rights'];
+        $id = $_GET['update_id'];
+        $sql = "UPDATE vehicles set v_code = '$v_code', v_name = '$v_name',v_model = '$v_model' ,v_platenum = '$v_platenum', v_seat_cap = $v_seat_cap, v_type = '$v_type',usage_rights = '$usage_rights' WHERE v_id = $id";
+        $result = mysqli_query($conn,$sql);
+
+        if($result){
+            header('location:adminVehicles.php');
+        }else{
+            die(mysqli_error($conn));
+        }
     }
-}
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
+
     <head>
         <style type = "text/css"></style>
         <meta charset = "utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name = "viewport" content = "width=device-width" initial-scale= 1, shrink-to-fit="no">
-        <title>Dashboard</title>
+        <title>Edit Vehicles</title>
 
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/datatables.css" rel="stylesheet">
     </head>
+
     <body>
+
         <header>
             <nav>
                 <ul>
@@ -72,23 +72,25 @@ if(isset($_POST['submit'])){
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
+
         <main class="vertical">
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="adminReports.php">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="card col-md-2">
                 <div class="cardHeader"><h3>Add a New Vehicle</h3></div>
                 <div class="cardBody">
@@ -147,8 +149,11 @@ if(isset($_POST['submit'])){
                     </form>
                 </div>
             </div>
+
         </main>
-        <footer>       
+        
+        <footer>
+
             <div class ="footer-container">
                 <div class = "footer-container-2">
                     <div class = "logo-placeholder">
@@ -157,10 +162,14 @@ if(isset($_POST['submit'])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
         </footer>
+
         <!--LOGOUT MODAL-->
+
         <dialog modalLogout class="modal">
+
             <div class="modal-content">
               <div><h1 class="alt">Confirmation</h1></div>
               <div><p class="alt">Are you sure you are ready to Log Out?</p></div>
@@ -169,11 +178,10 @@ if(isset($_POST['submit'])){
                   <button cancelLogout class="btn btn-danger">Cancel</button>
               </div>
             </div>
-          </dialog>
 
-        
+        </dialog>
 
-
+        <script src="js/logoutModal.js"></script>
         
     </body>
 </html>

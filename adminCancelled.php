@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
         <meta charset = "utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name = "viewport" content = "width=device-width" initial-scale= 1, shrink-to-fit="no">
-        <title>Dashboard</title>
+        <title>Cancelled Trips</title>
 
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/datatables.css" rel="stylesheet">
@@ -62,23 +62,26 @@ if(isset($_POST["submit"])){
                 <li><a href="adminVehicles.php">Vehicles</a></li>
                 <li><a href="adminRates.php">Rates</a></li>
                 <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="#">Accounts</a></li>
+                <li><a href="adminAccounts.php">Accounts</a></li>
                 <li><a href="adminReports.php">Reports</a></li>
             </ul>
             </nav>
             </div>
             <div class="card">
+
                 <div class="cardHeader">
                 <span class="float-left"><h1>Cancelled Requests</h1></span>
                 </div>
+
                 <div class="cardBody">
-    
-                <div class="table" >
+                <div class="table-fixed" >
                     
                     <div class="column-2">
-                        <div class="header-cell" >
+
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Requisition Number</div>
                         </div>
+
                         <?php
                         $sql = "SELECT * FROM requisition";
                         $result = $conn->query($sql);
@@ -99,16 +102,16 @@ if(isset($_POST["submit"])){
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
-        
-               
-                        
+
                     </div>
+
                     <div class="column-2">
-                        <div class="header-cell" >
+                        S
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Date of Trip(s)</div>
                         </div>
+
                         <?php
                         $sql = "SELECT * FROM requisition";
                         $result = $conn->query($sql);
@@ -128,16 +131,16 @@ if(isset($_POST["submit"])){
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
-        
-               
-                        
+
                     </div>
+
                     <div class="column-2">
-                        <div class="header-cell" >
+
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Date Reserved</div>
                         </div>
+
                         <?php
                         $sql = "SELECT * FROM requisition";
                         $result = $conn->query($sql);
@@ -157,16 +160,16 @@ if(isset($_POST["submit"])){
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
-        
-               
-                        
+
                     </div>
+
                     <div class="column-2">
-                        <div class="header-cell" >
+
+                        <div class="header-cell-sticky" >
                             <div class = "text-header-cell">Reservation(s) of</div>
                         </div>
+
                         <?php
                         $sql = "SELECT * FROM requisition";
                         $result = $conn->query($sql);
@@ -186,15 +189,10 @@ if(isset($_POST["submit"])){
                         } else {
                             echo "No data found in the database.";
                         }
-
                         ?>
-        
-               
-                        
+
                     </div>
-                    
-                    
-                
+        
                 </div> 
             </div>
         </main>
@@ -220,32 +218,7 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </dialog>
-        <!--FORM MODAL-->
-        <dialog newForm class="modal">
-            <div class ="modalContainer">
-                <div><h3 class="alt">Add a New Account</h3></div>
-                <form method="POST">
-                    <div class = "form-group">
-                        <div class = "form-row">
-                            <div class = "col-md-2">
-                                <label class="alt">Account Number</label>
-                                <input required name="accnt_no" class="form-control" placeholder="Account Number">
-                            </div>
-                            <div class = "col-md-2">
-                                <label class="alt">Office</label>
-                                <input required name="accnt_name" class="form-control" placeholder="Office">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <button  type="submit" name="submit" class="btn btn-success">Add Record</button>
-                    <button cancelForm class="btn btn-danger">Cancel</button>
-                </form>
-            </div>
-        </dialog>
 
-       
         <script src="js/logoutModal.js"></script>
         <script src="js/formModal.js"></script>
     </body>

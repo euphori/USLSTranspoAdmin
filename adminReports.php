@@ -1,17 +1,18 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["user_id"])){
-    $id = $_SESSION["user_id"];
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
-    $row = mysqli_fetch_assoc($result);
-}else{
-    header("Location: userLogin.php");
-}
+    require 'config.php';
+    if(!empty($_SESSION["user_id"])){
+        $id = $_SESSION["user_id"];
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
+        $row = mysqli_fetch_assoc($result);
+    }
+    else{
+        header("Location: userLogin.php");
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html>
+
     <head>
         <style type = "text/css"></style>
         <meta charset = "utf-8">
@@ -22,7 +23,9 @@ if(!empty($_SESSION["user_id"])){
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/datatables.css" rel="stylesheet">
     </head>
+
     <body>
+
         <header>
             <nav>
                 <ul>
@@ -36,27 +39,32 @@ if(!empty($_SESSION["user_id"])){
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
+
         <main class="vertical">
+
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="#">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="#">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="card">
+
                 <div class="cardHeader">
-                <span class="float-left"><h1>Reports</h1></span>
+                    <span class="float-left"><h1>Reports</h1></span>
                 </div>
+
                 <div class="cardBody">
                     <div class = "cardBody form-row center-items p-top-0 p-bot-0">
                         <a href = "adminReports.php" type = "button" class = "btn btn-success">Overall</a>
@@ -65,31 +73,36 @@ if(!empty($_SESSION["user_id"])){
                         <a href = "adminReports_vehicle.php" type = "button" class = "btn btn-success">Summary(Vehicle)</a>
                     </div>
                 </div>
+
                 <div class="cardHeader">
                     <span class="float-left"><h3>Generate Report (Overall)</h3></span>
                 </div>
+
                 <div class="cardBody">
                     <form name = "reportForm" id="reportform" method="post">
-                    <table>
-                        <tr>
-                            <td>From: <input type = "date" name="datefrom" value ="" onclick="GetDate(this);"></td>
-                            <td>To: <input type = "date" name="dateto" value="" onclick="GetDate(this);"> </td>
-                            <td>Sort by:
-                                 <select class="">
-                                    <option value="req_no">Req No.</option>
-                                    <option value="vehicle">Vehicle</option>
-                                    <option value="driver">Driver</option>
-                                    <option value="date_of_trip">Date of Trip</option>
-                                </select>
-                            </td>
-                            <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>
-                        </tr>
-                    </table>
+                        <table>
+                            <tr>
+                                <td>From: <input type = "date" name="datefrom" value ="" onclick="GetDate(this);"></td>
+                                <td>To: <input type = "date" name="dateto" value="" onclick="GetDate(this);"> </td>
+                                <td>Sort by:
+                                    <select class="">
+                                        <option value="req_no">Req No.</option>
+                                        <option value="vehicle">Vehicle</option>
+                                        <option value="driver">Driver</option>
+                                        <option value="date_of_trip">Date of Trip</option>
+                                    </select>
+                                </td>
+                                <td><input type="submit" class="btn btn-success" value="Generate" onclick=""></td>
+                            </tr>
+                        </table>
                     </form>
                 </div>
+
             </div>
         </main>
-        <footer>       
+
+        <footer>    
+
             <div class ="footer-container">
                 <div class = "footer-container-2">
                     <div class = "logo-placeholder">
@@ -98,10 +111,15 @@ if(!empty($_SESSION["user_id"])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
+
         </footer>
+
         <!--LOGOUT MODAL-->
+
         <dialog modalLogout class="modal">
+
             <div class="modal-content">
               <div><h1 class="alt">Confirmation</h1></div>
               <div><p class="alt">Are you sure you are ready to Log Out?</p></div>
@@ -110,7 +128,9 @@ if(!empty($_SESSION["user_id"])){
                   <button cancelLogout class="btn btn-danger">Cancel</button>
               </div>
             </div>
-          </dialog>
+
+        </dialog>
+        
         <script src="js/logoutModal.js"></script>
     </body>
 </html>

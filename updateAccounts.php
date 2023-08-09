@@ -1,39 +1,36 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["user_id"])){
-    $id = $_SESSION["user_id"];
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
-    $row = mysqli_fetch_assoc($result);
-    $user_name = $row['user_name'];
-}else{
-    header("Location: userLogin.php");
-}
+    require 'config.php';
+    if(!empty($_SESSION["user_id"])){
+        $id = $_SESSION["user_id"];
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = $id");
+        $row = mysqli_fetch_assoc($result);
+        $user_name = $row['user_name'];
+    }else{
+        header("Location: userLogin.php");
+    }
 ?>
 
 <?php
-$id = $_GET['update_id'];
-$sql = "SELECT * FROM accounts WHERE accnt_id = $id";
-$result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
-$accnt_name = $row['accnt_name'];
-$accnt_no = $row['accnt_no'];
-if(isset($_POST['submit'])){
-    $accnt_no = $_POST['accnt_no'];
-    $accnt_name = $_POST['accnt_name'];
     $id = $_GET['update_id'];
-    $sql = "UPDATE accounts set accnt_no = '$accnt_no', accnt_name = '$accnt_name' WHERE accnt_id = $id";
+    $sql = "SELECT * FROM accounts WHERE accnt_id = $id";
     $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $accnt_name = $row['accnt_name'];
+    $accnt_no = $row['accnt_no'];
+    if(isset($_POST['submit'])){
+        $accnt_no = $_POST['accnt_no'];
+        $accnt_name = $_POST['accnt_name'];
+        $id = $_GET['update_id'];
+        $sql = "UPDATE accounts set accnt_no = '$accnt_no', accnt_name = '$accnt_name' WHERE accnt_id = $id";
+        $result = mysqli_query($conn,$sql);
 
-    if($result){
-        header('location:adminAccounts.php');
-    }else{
-        die(mysqli_error($conn));
+        if($result){
+            header('location:adminAccounts.php');
+        }else{
+            die(mysqli_error($conn));
+        }
     }
-}
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -42,12 +39,13 @@ if(isset($_POST['submit'])){
         <meta charset = "utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name = "viewport" content = "width=device-width" initial-scale= 1, shrink-to-fit="no">
-        <title>Dashboard</title>
+        <title>Update Account</title>
 
         <link href="css/styles.css" rel="stylesheet">
         <link href="css/datatables.css" rel="stylesheet">
     </head>
     <body>
+
         <header>
             <nav>
                 <ul>
@@ -61,23 +59,25 @@ if(isset($_POST['submit'])){
                 <img class = "logo-img" src="assets/logo.png">
             </div>  
         </header>
+
         <main class="vertical">
             <div class ="card card-sidebar">
-            <nav class="sidebar">
-            <ul class="ul-vertical">
-                <li><a href="adminDashboard.php">Home</a></li>
-                <li><a href="adminRequisition.php">Requisition</a></li>
-                <li><a href="adminReservations.php">Reservations</a></li>
-                <li><a href="adminTickets.php">Trip Tickets</a></li>
-                <li><a href="adminCostings.php">Costing</a></li>
-                <li><a href="adminVehicles.php">Vehicles</a></li>
-                <li><a href="adminRates.php">Rates</a></li>
-                <li><a href="adminDrivers.php">Drivers</a></li>
-                <li><a href="adminAccounts.php">Accounts</a></li>
-                <li><a href="adminReports.php">Reports</a></li>
-            </ul>
-            </nav>
+                <nav class="sidebar">
+                    <ul class="ul-vertical">
+                        <li><a href="adminDashboard.php">Home</a></li>
+                        <li><a href="adminRequisition.php">Requisition</a></li>
+                        <li><a href="adminReservations.php">Reservations</a></li>
+                        <li><a href="adminTickets.php">Trip Tickets</a></li>
+                        <li><a href="adminCostings.php">Costing</a></li>
+                        <li><a href="adminVehicles.php">Vehicles</a></li>
+                        <li><a href="adminRates.php">Rates</a></li>
+                        <li><a href="adminDrivers.php">Drivers</a></li>
+                        <li><a href="adminAccounts.php">Accounts</a></li>
+                        <li><a href="adminReports.php">Reports</a></li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="card col-md-2">
                 <div class="cardHeader"><h3>Update Account</h3></div>
                 <div class="cardBody">
@@ -99,8 +99,11 @@ if(isset($_POST['submit'])){
                     </form> 
                 </div>
             </div>
+
         </main>
-        <footer>       
+
+        <footer>  
+
             <div class ="footer-container">
                 <div class = "footer-container-2">
                     <div class = "logo-placeholder">
@@ -109,9 +112,13 @@ if(isset($_POST['submit'])){
                     <div class = "logo-text">
                         &copy; 2023 University of St. La Salle. All rights reserved.
                     </div>
+                </div>
             </div>
+
         </footer>
+
         <!--LOGOUT MODAL-->
+
         <dialog modalLogout class="modal">
             <div class="modal-content">
               <div><h1 class="alt">Confirmation</h1></div>
@@ -121,11 +128,10 @@ if(isset($_POST['submit'])){
                   <button cancelLogout class="btn btn-danger">Cancel</button>
               </div>
             </div>
-          </dialog>
 
-        
+        </dialog>
 
-
+        <script src="js/logoutModal.js"></script>
         
     </body>
 </html>
