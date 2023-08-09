@@ -343,10 +343,10 @@ if(isset($_POST['submit_accnt'])){
                             <th>Action</th>
                         </tr>
                         <tr align ="center">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo  $time_from?></td>
+                            <td><?php echo  $time_to?></td>
+                            <td><?php echo  $vehicle?></td>
+                            <td><?php echo  $driver?></td>
                             <td><a type= "button" class = "btn btn-danger">Cancel Trip</a></td>
                         </tr>
                     </table>

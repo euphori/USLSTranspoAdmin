@@ -81,8 +81,11 @@ if(isset($_POST['submit_odo'])){
     $id = $_GET['ticket_id'];
     
 
+
+    /* CHARGE AMMOUNT FORMULA */
     $distance = $odo_in - $odo_out ;
     $charge_amnt = (($distance - 8) * $succ_rate) + $flag_rate;
+
     $sql = "UPDATE reservation set waiting = $waiting, actual_dt = '$actual_dt',odo_out = $odo_out ,
     actual_at = '$actual_at', guard_on_duty = '$guard_on_duty' ,distance = $distance, charge_amnt = $charge_amnt,
     odo_in = $odo_in WHERE req_no = $id";
